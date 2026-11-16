@@ -34,19 +34,37 @@ def main():
         with patch('retrieval.embed', return_value=[]):
             result = answer(store, question, use_llm=False)
         assert result['context']['chunks'], 'Answer has no text evidence'
+        assert result['context']['chains'], 'No directed multi-hop chain for a prerequisite question'
+        assert result['context']['anchors'][0]['id'] == 'projeto-integrador'
+        # Algoritmos de grafo (GDS): PageRank e comunidades gravados em todas as entidades
+        missing = store.run('MATCH (e:Entity) WHERE e.pagerank IS NULL OR e.community IS NULL RETURN count(e) AS n')[0]['n']
+        assert missing == 0, f'{missing} entities without pagerank/community'
+        # Defesa em profundidade: a transação de leitura do Text2Cypher recusa escrita no próprio banco
+        try:
+            store.run_read("CREATE (:Entity {id: 'invasor'}) RETURN 1")
+            raise AssertionError('Read transaction accepted a write')
+        except AssertionError:
+            raise
+        except Exception:
+            pass
+        assert not store.run("MATCH (e:Entity {id: 'invasor'}) RETURN e")
         if options.llm:
             vector = embed(question)
             assert len(vector) == 768
             assert store.vector_chunks(vector), 'Vector search returned no chunks'
             assert store.vector_entities(vector), 'Entity vector search returned nothing'
             assert chat('Responda em português de forma breve.', 'Diga olá.').strip()
+            full = answer(store, question)
+            assert full['cypher']['attempts'], 'Text2Cypher did not run'
+            assert full['confidence']['level'] in ('Alta', 'Média', 'Baixa')
+            assert full['citations'] is not None
         from streamlit.testing.v1 import AppTest
         ui = AppTest.from_file(str(Path(__file__).parent/'app.py')).run(timeout=30)
         assert not ui.exception, str(ui.exception)
         assert not ui.error, str(ui.error)
         assert len(ui.tabs) == 3, 'Expected three UI tabs'
-        print('PASS: Streamlit UI, seed, indexes, text retrieval, graph traversal, provenance, answer' +
-              (', embedding, vector search, LLM' if options.llm else ' (LLM not tested)'))
+        print('PASS: Streamlit UI, seed, indexes, text retrieval, graph traversal, chains, GDS, read-only Cypher, provenance, answer' +
+              (', embedding, vector search, LLM, Text2Cypher, citations, confidence' if options.llm else ' (LLM not tested)'))
     finally:
         store.close()
 

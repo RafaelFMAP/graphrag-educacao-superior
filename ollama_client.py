@@ -5,14 +5,17 @@ from config import OLLAMA_URL, OLLAMA_MODEL, OLLAMA_EMBED_MODEL
 EMBED_DIMENSIONS = 768
 
 
-def chat(system, prompt, format=None, options=None, timeout=180):
+# O padrão do Ollama (2048–4096 tokens) truncaria em silêncio os prompts com evidências.
+DEFAULT_OPTIONS = {"num_ctx": 8192}
+
+
+def chat(system, prompt, format=None, options=None, timeout=300):
     """Chat call. `format` accepts "json" or a JSON Schema (structured output)."""
     payload = {"model": OLLAMA_MODEL, "stream": False,
                "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}]}
     if format is not None:
         payload["format"] = format
-    if options:
-        payload["options"] = options
+    payload["options"] = {**DEFAULT_OPTIONS, **(options or {})}
     resp = requests.post(f"{OLLAMA_URL}/api/chat", json=payload, timeout=timeout)
     resp.raise_for_status()
     return resp.json()["message"]["content"]

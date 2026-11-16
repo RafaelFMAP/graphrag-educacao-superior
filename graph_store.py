@@ -12,13 +12,26 @@ SCHEMA = [
     "CREATE INDEX entity_kind IF NOT EXISTS FOR (n:Entity) ON (n.kind)",
     "CREATE INDEX document_version IF NOT EXISTS FOR (n:Document) ON (n.version)",
     "CREATE INDEX chunk_locator IF NOT EXISTS FOR (n:Chunk) ON (n.locator)",
-    # Fulltext (Lucene) para âncoras lexicais
-    "CREATE FULLTEXT INDEX entity_text IF NOT EXISTS FOR (n:Entity) ON EACH [n.name, n.id, n.aliases_text]",
-    "CREATE FULLTEXT INDEX chunk_text IF NOT EXISTS FOR (n:Chunk) ON EACH [n.text]",
+    "CREATE INDEX entity_community IF NOT EXISTS FOR (n:Entity) ON (n.community)",
+    "CREATE INDEX entity_pagerank IF NOT EXISTS FOR (n:Entity) ON (n.pagerank)",
+    # Fulltext (Lucene) com analisador "brazilian": radicaliza o português ("dispensado" casa com "dispensa")
+    "CREATE FULLTEXT INDEX entity_text IF NOT EXISTS FOR (n:Entity) ON EACH [n.name, n.id, n.aliases_text] OPTIONS {indexConfig: {`fulltext.analyzer`: 'brazilian'}}",
+    "CREATE FULLTEXT INDEX chunk_text IF NOT EXISTS FOR (n:Chunk) ON EACH [n.text] OPTIONS {indexConfig: {`fulltext.analyzer`: 'brazilian'}}",
     # Vetoriais: nomic-embed-text usa 768 dimensões; funciona só com esse formato
     "CREATE VECTOR INDEX chunk_vector IF NOT EXISTS FOR (n:Chunk) ON (n.embedding) OPTIONS {indexConfig: {`vector.dimensions`: 768, `vector.similarity_function`: 'cosine'}}",
     "CREATE VECTOR INDEX entity_vector IF NOT EXISTS FOR (n:Entity) ON (n.embedding) OPTIONS {indexConfig: {`vector.dimensions`: 768, `vector.similarity_function`: 'cosine'}}",
 ]
+
+
+def compact(value):
+    """Reduz nós devolvidos pelo Text2Cypher ao nome, sem embeddings, para caber no prompt."""
+    if isinstance(value, dict):
+        if 'name' in value:
+            return value['name']
+        return {k: compact(v) for k, v in value.items() if k not in ('embedding', 'aliases_text')}
+    if isinstance(value, list):
+        return [compact(v) for v in value[:50]]
+    return value
 
 
 def lucene_terms(text, limit=8):
@@ -32,7 +45,8 @@ class GraphStore:
     def __init__(self, driver=None):
         if driver is None:
             from neo4j import GraphDatabase
-            driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
+            # Avisos como "tipo de relação inexistente" (ex.: PERTENCE_A sem uso) não são erros.
+            driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD), notifications_min_severity='OFF')
         self.driver = driver
 
     def close(self): self.driver.close()
@@ -41,12 +55,24 @@ class GraphStore:
         with self.driver.session() as session:
             return [r.data() for r in session.run(query, **params)]
 
+    def run_read(self, query, timeout=5.0, **params):
+        """Executa em transação de LEITURA com timeout: o Neo4j recusa qualquer escrita."""
+        from neo4j import READ_ACCESS, unit_of_work
+
+        @unit_of_work(timeout=timeout)
+        def work(tx):
+            return [compact(r.data()) for r in tx.run(query, **params)]
+        with self.driver.session(default_access_mode=READ_ACCESS) as session:
+            return session.execute_read(work)
+
     # ---------- schema ----------
     def setup(self):
-        # Migração: versões anteriores criaram entity_text sem aliases.
-        old = self.run("SHOW INDEXES YIELD name, properties WHERE name='entity_text' RETURN properties")
-        if old and 'aliases_text' not in old[0]['properties']:
-            self.run("DROP INDEX entity_text")
+        # Migração: versões anteriores criaram os fulltext sem aliases e sem analisador de português.
+        for row in self.run("""SHOW INDEXES YIELD name, properties, options
+                WHERE name IN ['entity_text', 'chunk_text'] RETURN name, properties, options"""):
+            analyzer = (row['options'] or {}).get('indexConfig', {}).get('fulltext.analyzer')
+            if analyzer != 'brazilian' or (row['name'] == 'entity_text' and 'aliases_text' not in row['properties']):
+                self.run(f"DROP INDEX {row['name']}")
         for statement in SCHEMA:
             self.run(statement)
 
@@ -139,6 +165,80 @@ class GraphStore:
         RETURN a.id AS source,a.name AS source_name,type(r) AS relation,
                b.id AS target,b.name AS target_name,r.evidence_id AS evidence_id,r.evidence AS evidence
         LIMIT $limit""", term=lucene, limit=limit)
+
+    def fulltext_entities(self, q, limit=5):
+        lucene = lucene_terms(q)
+        if not lucene: return []
+        return self.run("""CALL db.index.fulltext.queryNodes('entity_text',$q) YIELD node,score
+            RETURN node.id AS id, node.name AS name, node.kind AS label, score LIMIT $k""", q=lucene, k=limit)
+
+    def chunks_by_id(self, ids):
+        if not ids: return []
+        return self.run("""MATCH (c:Chunk) WHERE c.id IN $ids
+            RETURN c.id AS id, c.text AS text, c.locator AS locator, 0.0 AS score""", ids=list(ids))
+
+    @staticmethod
+    def expand_query(relations):
+        """Consulta-modelo da expansão multi-hop; os tipos vêm da allowlist, nunca do usuário."""
+        types = [r for r in relations if r in DOMAIN["relations"]] or DOMAIN["relations"]
+        return f"""MATCH p=(anchor:Entity)-[:{'|'.join(types)}*1..3]-(other:Entity)
+WHERE anchor.id IN $anchors
+  AND all(n IN nodes(p)[1..-1] WHERE COUNT {{ (n)--(:Entity) }} <= $max_degree)
+UNWIND range(0, length(p) - 1) AS i
+WITH relationships(p)[i] AS r, i + 1 AS hops
+WITH r, min(hops) AS hops
+WITH startNode(r) AS a, r, endNode(r) AS b, hops
+RETURN a.id AS source, a.name AS source_name, a.kind AS source_label, type(r) AS relation,
+       b.id AS target, b.name AS target_name, b.kind AS target_label,
+       r.evidence_id AS evidence_id, r.evidence AS evidence, hops,
+       round(coalesce(a.pagerank, 0) + coalesce(b.pagerank, 0), 3) AS pagerank
+ORDER BY hops, pagerank DESC LIMIT $limit"""
+
+    def expand(self, anchor_ids, relations, limit=40, max_degree=15):
+        """1 a 3 saltos a partir das âncoras, sem atravessar hubs (grau > max_degree),
+        ordenados por distância e PageRank."""
+        return self.run(self.expand_query(relations), anchors=list(anchor_ids), limit=limit, max_degree=max_degree)
+
+    def chains(self, anchor_ids, relation, outgoing=True, max_hops=4, limit=8):
+        """Cadeias dirigidas maximais de uma relação a partir das âncoras (raciocínio multi-hop explícito).
+
+        outgoing=True: âncora -> ... (ex.: pré-requisitos diretos e indiretos via EXIGE);
+        outgoing=False: ... -> âncora (ex.: disciplinas que dependem da âncora).
+        """
+        if relation not in DOMAIN["relations"]:
+            raise ValueError("Relação não permitida: " + relation)
+        if outgoing:
+            query = f"""MATCH p=(a:Entity)-[:`{relation}`*1..{int(max_hops)}]->(x:Entity)
+                WHERE a.id IN $ids AND (length(p) = {int(max_hops)} OR NOT (x)-[:`{relation}`]->(:Entity))
+                RETURN a.name AS anchor, [n IN nodes(p) | n.name] AS nodes, length(p) AS hops
+                ORDER BY hops DESC LIMIT $k"""
+        else:
+            query = f"""MATCH p=(x:Entity)-[:`{relation}`*1..{int(max_hops)}]->(a:Entity)
+                WHERE a.id IN $ids AND (length(p) = {int(max_hops)} OR NOT (:Entity)-[:`{relation}`]->(x))
+                RETURN a.name AS anchor, [n IN nodes(p) | n.name] AS nodes, length(p) AS hops
+                ORDER BY hops DESC LIMIT $k"""
+        return [{**r, 'relation': relation, 'outgoing': outgoing} for r in self.run(query, ids=list(anchor_ids), k=limit)]
+
+    def shortest_path_ids(self, source_id, target_id, max_degree=15):
+        return self.run("""MATCH (a:Entity {id:$a}),(b:Entity {id:$b})
+        MATCH p=shortestPath((a)-[*..6]-(b))
+        WHERE all(n IN nodes(p) WHERE n:Entity)
+          AND all(n IN nodes(p) WHERE n = a OR n = b OR COUNT { (n)--(:Entity) } <= $max_degree)
+        RETURN [n IN nodes(p)|n.name] AS nodes, [n IN nodes(p)|n.id] AS ids,
+               [r IN relationships(p)|type(r)] AS relations""", a=source_id, b=target_id, max_degree=max_degree)
+
+    def communities_of(self, anchor_ids, members=6):
+        return self.run("""MATCH (a:Entity) WHERE a.id IN $ids AND coalesce(a.community, -1) >= 0
+        MATCH (m:Entity {community: a.community}) WHERE m <> a
+        WITH a, m ORDER BY m.pagerank DESC
+        WITH a, collect(m.name)[..$k] AS members
+        RETURN a.name AS anchor, a.community AS community, members""", ids=list(anchor_ids), k=members)
+
+    def entity_details(self, ids):
+        if not ids: return []
+        return self.run("""MATCH (n:Entity) WHERE n.id IN $ids
+            RETURN n.id AS id, n.name AS name, n.kind AS label,
+                   round(coalesce(n.pagerank, 0), 3) AS pagerank, n.community AS community""", ids=list(ids))
 
     def shortest_path(self, source_id, target_id):
         return self.run("""MATCH (a:Entity {id:$a}),(b:Entity {id:$b})

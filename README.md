@@ -12,10 +12,11 @@ Assistente acadêmico demonstrativo para consultar **cursos, matrizes curricular
 - Divide documentos em trechos (por parágrafo) e extrai entidades e relações com um modelo local, usando saída JSON estruturada.
 - Aceita somente rótulos e relações previstos no domínio e exige um trecho literal como evidência das relações extraídas; a frase de evidência fica gravada na relação.
 - Resolve entidades equivalentes (mesmo ID canônico, alias, sigla, similaridade de texto ou de embedding) para não duplicar nós.
-- Combina busca textual e vetorial, com embeddings de 768 dimensões.
-- Recupera relações em até três saltos e exibe o subgrafo de contexto.
-- Calcula o caminho mínimo entre duas entidades, limitado a oito relações.
-- Gera respostas com as evidências recuperadas e permite consultar os resultados sem geração por IA.
+- Combina busca vetorial (trechos e entidades) e textual (Lucene com radicalização do português), fundidas por Reciprocal Rank Fusion.
+- Percorre o grafo em 1 a 3 saltos a partir das entidades da pergunta e monta cadeias dirigidas (ex.: pré-requisitos indiretos).
+- Usa algoritmos de grafo do Neo4j GDS: PageRank ordena o contexto, Leiden agrupa comunidades e o caminho mínimo liga entidades da pergunta.
+- Gera Cypher a partir da pergunta (Text2Cypher), com validação e execução somente leitura.
+- Gera respostas que citam cada evidência ([T#] trechos, [P#] caminhos, [C#] linhas Cypher, [G#] comunidades), verifica as citações e calcula um nível de confiança; também permite consultar as evidências sem geração por IA.
 
 ## Arquitetura
 
@@ -135,7 +136,7 @@ Após a inicialização completa:
 docker compose exec -T app python smoke.py --llm
 ```
 
-Verifica os dados, índices, busca textual, caminhos, referência de evidência, interface Streamlit, embeddings, busca vetorial e uma chamada real de geração ao Ollama.
+Verifica dados, índices, busca textual, caminhos e cadeias, PageRank/comunidades, a recusa de escrita na transação de leitura, procedência, interface Streamlit, embeddings, busca vetorial, Text2Cypher, citações e confiança com chamadas reais ao Ollama.
 
 ### Teste sem baixar modelos
 
@@ -225,6 +226,18 @@ flowchart LR
 
 As consultas Cypher usam parâmetros e relações/rótulos validados por lista permitida. A presença de evidência literal é uma validação técnica; ainda é necessário revisar a interpretação semântica da relação.
 
+## Recuperação híbrida e raciocínio multi-hop
+
+`retrieval.answer()` executa, para cada pergunta:
+
+1. **Ligação de entidades**: nomes e aliases citados na pergunta; na falta deles, busca vetorial (`entity_vector`) e fulltext (`entity_text`).
+2. **Trechos**: busca vetorial (`chunk_vector`) e fulltext (`chunk_text`, analisador `brazilian`) fundidas por RRF, mais os trechos de procedência das relações recuperadas.
+3. **Grafo**: as palavras da pergunta indicam as relações relevantes (ex.: "pré-requisito" → `EXIGE`). A expansão Cypher de 1 a 3 saltos não atravessa hubs (grau > 15) e é ordenada por distância e PageRank. Para relações dirigidas, o grafo monta **cadeias completas** (`Projeto Integrador → Banco de Dados → Estruturas de Dados → Algoritmos`), entregando ao LLM o raciocínio multi-hop já resolvido. Também entram os caminhos mínimos entre entidades da pergunta e a comunidade Leiden de cada uma.
+4. **Text2Cypher** (`text2cypher.py`): o LLM recebe o esquema, exemplos e as entidades reconhecidas e gera uma consulta. A validação recusa escrita, `CALL`, múltiplas instruções, comentários e rótulos ou relações fora da allowlist, e impõe `LIMIT` ≤ 100. A consulta roda numa transação de **leitura** com timeout de 5 s, então o próprio Neo4j recusa qualquer escrita. Se falhar, o erro volta ao LLM numa segunda tentativa; persistindo a falha, a resposta usa só a busca híbrida.
+5. **Geração fundamentada**: o LLM responde citando os identificadores das evidências. `confidence.py` confere cada citação contra o contexto, sinaliza citações inexistentes ou ausentes e calcula a confiança (Alta/Média/Baixa) com quatro sinais documentados: fundamentação das citações, força da busca vetorial, cobertura do grafo e resultado do Cypher. Uma abstenção ("não há evidência suficiente") é sempre classificada como Baixa.
+
+**Algoritmos de grafo** (`analytics.py`, Neo4j Graph Data Science, instalado pelo Compose via `NEO4J_PLUGINS`): PageRank sobre o grafo dirigido (com `EQUIVALE_A` sem direção) e Leiden sobre o grafo não dirigido, gravados em `Entity.pagerank` e `Entity.community`. Rodam ao fim do `seed.py` e podem ser repetidos com `docker compose exec app python analytics.py`.
+
 ## Estrutura do repositório
 
 ```text
@@ -235,7 +248,10 @@ pipeline.py            Leitura, divisão em trechos, extração e ingestão
 graph_store.py         Neo4j, índices e consultas
 entity_resolution.py   Resolução de entidades (canonicalização)
 schema.cypher          Constraints e índices documentados
-retrieval.py           Recuperação híbrida e geração de respostas
+retrieval.py           Recuperação híbrida, cadeias multi-hop e geração
+text2cypher.py         Geração, validação e execução segura de Cypher
+confidence.py          Verificação de citações e nível de confiança
+analytics.py           PageRank e Leiden (Neo4j GDS)
 ollama_client.py       Chat e embeddings locais
 seed.py                Carga dos dados sintéticos
 smoke.py               Teste de integração

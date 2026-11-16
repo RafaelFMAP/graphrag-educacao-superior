@@ -42,6 +42,11 @@ def main(with_embeddings=True, reset=False):
                 raise RuntimeError(f"Relação do gabarito viola a assinatura de tipos: {edge}")
         print(f"Pronto: {len(data['entities'])} entidades, {len(data['edges'])} relações e "
               f"{len(data['documents'])} documentos sintéticos.")
+        try:
+            from analytics import run_analytics
+            print('Algoritmos de grafo:', run_analytics(store))
+        except Exception as exc:
+            print('Algoritmos de grafo indisponíveis (verifique o plugin GDS):', str(exc).splitlines()[0])
     finally:
         store.close()
 

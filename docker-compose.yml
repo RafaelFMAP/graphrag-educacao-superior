@@ -13,6 +13,9 @@ services:
     image: neo4j:5.26-community
     environment:
       NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:-graphrag_demo}
+      # Graph Data Science (PageRank, Leiden/Louvain); baixado na primeira inicialização
+      NEO4J_PLUGINS: '["graph-data-science"]'
+      NEO4J_dbms_security_procedures_unrestricted: gds.*
     ports:
       - "127.0.0.1:${NEO4J_HTTP_PORT:-7474}:7474"
       - "127.0.0.1:${NEO4J_BOLT_PORT:-7687}:7687"
