@@ -118,7 +118,7 @@ Por exemplo: origem `Projeto Integrador` e destino `Algoritmos` mostram uma depe
 - Quais disciplinas estão na Matriz 2026?
 - Quais documentos fundamentam a matriz curricular?
 
-Há 20 perguntas em `data/questions.json` para avaliação posterior e revisão humana.
+As 35 perguntas de avaliação estão em `data/questions.json`.
 
 ## Testes
 
@@ -165,13 +165,20 @@ python -m pytest -q
 
 **Resultado verificado em 15/11/2026:** 11/11 testes unitários no Windows e 11/11 no container Linux; construção Docker e teste completo de integração aprovados. Consulte [o relatório dos testes](TEST_RESULTS.md) para ambiente e limites da validação.
 
-Para avaliar a qualidade da recuperação, revise `data/questions.json`, preencha `expected_sources` e marque `needs_manual_review` como `false` apenas nas perguntas validadas. Depois execute:
+## Avaliação
+
+`data/questions.json` tem 35 perguntas geradas por `scripts/gerar_perguntas.py` a partir do grafo-gabarito, de modo que as respostas esperadas são exatas: 20 de 1 salto, 5 de 2 saltos, 4 de 3 a 6 saltos (pré-requisitos em cadeia) e 6 sem resposta no corpus (dados de estudantes, decisões individuais, disciplinas inexistentes), que testam a abstenção. Revise as perguntas antes de citar os números como resultado do grupo.
 
 ```bash
+# Comparação GraphRAG híbrido x baseline somente vetorial (com LLM; cerca de 1 h em CPU)
 docker compose exec -T app python evaluate.py
+# Só métricas de recuperação/contexto, sem LLM (cerca de 1 min)
+docker compose exec -T app python evaluate.py --no-llm
+# Qualidade da extração NER/RE e da resolução de entidades contra o gabarito (cerca de 40 min)
+docker compose exec -T app python evaluate_extraction.py
 ```
 
-Ainda não há métricas de qualidade: as perguntas e fontes esperadas aguardam revisão humana.
+Os resultados ficam em `docs/resultados/` (`avaliacao.md`, `extracao.md` e os JSON com cada resposta). As métricas estão definidas no cabeçalho de cada script: cobertura das entidades esperadas no contexto e na resposta, precisão de entidades, respostas exatas, entidades não esperadas (indício de alucinação), abstenção correta, citações válidas e latência; para a extração, precisão, revocação e F1 de entidades (com e sem resolução) e de relações (com e sem assinatura de tipos).
 
 ## Dados de demonstração
 
@@ -258,9 +265,11 @@ analytics.py           PageRank e Leiden (Neo4j GDS)
 ollama_client.py       Chat e embeddings locais
 seed.py                Carga dos dados sintéticos
 smoke.py               Teste de integração
-evaluate.py            Avaliação de perguntas revisadas
+evaluate.py            Avaliação GraphRAG x baseline vetorial
+evaluate_extraction.py Avaliação da extração NER/RE e da resolução de entidades
 data/                  Corpus sintético, grafo-gabarito e perguntas
-scripts/               Geração do corpus e do gabarito
+scripts/               Geração do corpus, do gabarito e das perguntas
+docs/resultados/       Resultados das avaliações
 tests/                 Testes unitários
 Dockerfile             Imagem da aplicação
 docker-compose.yml     Orquestração dos serviços
