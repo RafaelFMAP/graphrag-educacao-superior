@@ -15,6 +15,7 @@ Duas proteções bloqueiam fusões erradas nas etapas 4 e 5: numerais diferentes
 ("Cálculo I" ≠ "Cálculo II") e nomes em que um é extensão do outro
 ("Banco de Dados" ≠ "Banco de Dados Avançado").
 """
+import re
 from rapidfuzz import fuzz
 from pipeline import canonical
 
@@ -34,8 +35,13 @@ def tokens(name):
     return [t for t in canonical(name).split("-") if t]
 
 
+def is_numeral(token):
+    """Romanos, dígitos e ordinais ("7o" vem de "7º" após a canonicalização)."""
+    return token in NUMERALS or bool(re.fullmatch(r'\d+[oa]?', token))
+
+
 def numerals(toks):
-    return {ROMAN.get(t, t) for t in toks if t in NUMERALS or t.isdigit()}
+    return {ROMAN.get(t.rstrip('oa'), t.rstrip('oa')) if t[0].isdigit() else t for t in toks if is_numeral(t)}
 
 
 def compatible(a, b):
@@ -51,7 +57,7 @@ def compatible(a, b):
 def acronym_key(name):
     """('poo', set()) para 'Programação Orientada a Objetos'; ('tcc', {'i'}) para 'TCC I'."""
     toks = tokens(name)
-    words = [t for t in toks if t not in STOPWORDS and t not in NUMERALS and not t.isdigit()]
+    words = [t for t in toks if t not in STOPWORDS and not is_numeral(t)]
     return "".join(w[0] for w in words), frozenset(numerals(toks))
 
 
@@ -97,7 +103,7 @@ class EntityResolver:
                 return c["id"], "alias", None
         if is_acronym(name):
             toks = tokens(name)
-            key = ("".join(t for t in toks if t not in NUMERALS and not t.isdigit()), frozenset(numerals(toks)))
+            key = ("".join(t for t in toks if not is_numeral(t)), frozenset(numerals(toks)))
             hits = {c["id"] for c in candidates if acronym_key(c["name"]) == key}
             if len(hits) == 1:
                 return hits.pop(), "sigla", None

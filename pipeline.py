@@ -133,7 +133,8 @@ def extract_graph(text):
                    f"Rótulos: {', '.join(DOMAIN['labels'])}. {LABEL_GLOSSARY}\n"
                    f"Relações: {', '.join(DOMAIN['relations'])}. {RELATION_GLOSSARY}\n"
                    f"Exemplo: {EXTRACTION_EXAMPLE}")
-    raw = chat(instruction, text, format=EXTRACTION_SCHEMA, options={"temperature": 0})
+    # num_predict limita a saída: com JSON estruturado, modelos pequenos às vezes geram sem parar
+    raw = chat(instruction, text, format=EXTRACTION_SCHEMA, options={"temperature": 0, "num_predict": 1500})
     data = _parse_json(raw)
     entities = []; ids = set()
     for e in data.get('entities', []):

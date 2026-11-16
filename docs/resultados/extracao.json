@@ -1,0 +1,177 @@
+{
+  "documentos": {
+    "ppc-2026": {
+      "entidades_sem_resolucao": {
+        "precisao": 0.797,
+        "revocacao": 0.839,
+        "f1": 0.817,
+        "acertos": 47,
+        "extraidas": 59,
+        "gabarito": 56
+      },
+      "entidades_com_resolucao": {
+        "precisao": 0.825,
+        "revocacao": 0.839,
+        "f1": 0.832,
+        "acertos": 47,
+        "extraidas": 57,
+        "gabarito": 56
+      },
+      "relacoes": {
+        "precisao": 0.517,
+        "revocacao": 0.116,
+        "f1": 0.19,
+        "acertos": 15,
+        "extraidas": 29,
+        "gabarito": 129
+      },
+      "relacoes_com_assinatura": {
+        "precisao": 0.938,
+        "revocacao": 0.116,
+        "f1": 0.207,
+        "acertos": 15,
+        "extraidas": 16,
+        "gabarito": 129
+      },
+      "relacoes_erradas_exemplos": [
+        "ppc-2026 SUBSTITUI matriz-2022"
+      ]
+    },
+    "ppc-2022": {
+      "entidades_sem_resolucao": {
+        "precisao": 1.0,
+        "revocacao": 0.565,
+        "f1": 0.722,
+        "acertos": 13,
+        "extraidas": 13,
+        "gabarito": 23
+      },
+      "entidades_com_resolucao": {
+        "precisao": 1.0,
+        "revocacao": 0.565,
+        "f1": 0.722,
+        "acertos": 13,
+        "extraidas": 13,
+        "gabarito": 23
+      },
+      "relacoes": {
+        "precisao": 0.556,
+        "revocacao": 0.2,
+        "f1": 0.294,
+        "acertos": 5,
+        "extraidas": 9,
+        "gabarito": 25
+      },
+      "relacoes_com_assinatura": {
+        "precisao": 0.556,
+        "revocacao": 0.2,
+        "f1": 0.294,
+        "acertos": 5,
+        "extraidas": 9,
+        "gabarito": 25
+      },
+      "relacoes_erradas_exemplos": [
+        "estruturas-de-dados-i EXIGE banco-de-dados-i",
+        "estruturas-de-dados-i EXIGE estruturas-de-dados-ii",
+        "introducao-a-programacao EQUIVALE_A estruturas-de-dados",
+        "programacao-ii EXIGE banco-de-dados-i"
+      ]
+    },
+    "regulamento-academico-2026": {
+      "entidades_sem_resolucao": {
+        "precisao": 1.0,
+        "revocacao": 0.056,
+        "f1": 0.105,
+        "acertos": 1,
+        "extraidas": 1,
+        "gabarito": 18
+      },
+      "entidades_com_resolucao": {
+        "precisao": 1.0,
+        "revocacao": 0.056,
+        "f1": 0.105,
+        "acertos": 1,
+        "extraidas": 1,
+        "gabarito": 18
+      },
+      "relacoes": {
+        "precisao": 0.0,
+        "revocacao": 0.0,
+        "f1": 0.0,
+        "acertos": 0,
+        "extraidas": 0,
+        "gabarito": 13
+      },
+      "relacoes_com_assinatura": {
+        "precisao": 0.0,
+        "revocacao": 0.0,
+        "f1": 0.0,
+        "acertos": 0,
+        "extraidas": 0,
+        "gabarito": 13
+      },
+      "relacoes_erradas_exemplos": []
+    }
+  },
+  "resolucao": {
+    "fuzzy: errada": 2
+  },
+  "falhas": [
+    "ppc-2022 trecho 0: Expecting ',' delimiter: line 1 column 5048 (char 5047)"
+  ],
+  "decisoes": [
+    {
+      "nome": "7º período da Matriz 2026",
+      "rotulo": "Campus",
+      "id_final": "6o-periodo-da-matriz-2026",
+      "metodo": "fuzzy",
+      "avaliacao": "errada"
+    },
+    {
+      "nome": "8º período da Matriz 2026",
+      "rotulo": "Campus",
+      "id_final": "6o-periodo-da-matriz-2026",
+      "metodo": "fuzzy",
+      "avaliacao": "errada"
+    }
+  ],
+  "total": {
+    "entidades_sem_resolucao": {
+      "precisao": 0.836,
+      "revocacao": 0.629,
+      "f1": 0.718,
+      "acertos": 61,
+      "extraidas": 73,
+      "gabarito": 97
+    },
+    "entidades_com_resolucao": {
+      "precisao": 0.859,
+      "revocacao": 0.629,
+      "f1": 0.726,
+      "acertos": 61,
+      "extraidas": 71,
+      "gabarito": 97
+    },
+    "relacoes": {
+      "precisao": 0.526,
+      "revocacao": 0.12,
+      "f1": 0.195,
+      "acertos": 20,
+      "extraidas": 38,
+      "gabarito": 167
+    },
+    "relacoes_com_assinatura": {
+      "precisao": 0.8,
+      "revocacao": 0.12,
+      "f1": 0.208,
+      "acertos": 20,
+      "extraidas": 25,
+      "gabarito": 167
+    }
+  },
+  "meta": {
+    "data": "2026-11-16 04:36",
+    "modelo": "llama3.2:3b",
+    "segundos": 1388
+  }
+}

@@ -90,3 +90,10 @@ def test_existing_label_wins_on_conflict(resolver):
     # o modelo rotulou uma disciplina conhecida como Instituicao: reaproveita o nó, sem reetiquetar
     assert resolver.resolve('Algoritmos', 'Instituicao')[:2] == ('algoritmos', 'rótulo divergente')
     assert resolver.resolve('POO', 'Curso')[:2] == ('programacao-orientada-a-objetos', 'rótulo divergente')
+
+
+def test_ordinals_are_numerals():
+    # regressão encontrada pela avaliação da extração: "7º período" foi fundido com "6º período"
+    assert not compatible('7º período da Matriz 2026', '6º período da Matriz 2026')
+    assert compatible('7º período', '7º Período')
+    assert compatible('2º semestre', '2 semestre')

@@ -67,10 +67,17 @@ def main():
         resolver = EntityResolver(catalog, embed_fn=embed)
         raw, resolved, rels, rels_sig = set(), set(), set(), set()
         for i, chunk in enumerate(chunks_of(text)):
-            try:
-                entities, edges = extract_graph(chunk)
-            except Exception as exc:
-                report['falhas'].append(f"{doc['id']} trecho {i}: {exc}")
+            entities = None
+            for attempt in range(2):
+                try:
+                    entities, edges = extract_graph(chunk)
+                    break
+                except Exception as exc:
+                    # falha de infraestrutura (timeout, modelo sem memória) ou JSON inválido: uma nova tentativa
+                    if attempt == 1:
+                        report['falhas'].append(f"{doc['id']} trecho {i}: {exc}")
+                    time.sleep(10)
+            if entities is None:
                 continue
             mapping = {}
             for e in entities:
@@ -79,8 +86,13 @@ def main():
                 mapping[e['id']] = rid
                 resolved.add(rid)
                 if rid != e['id']:
-                    key = f"{method}: {'corrigida' if rid in gold_entities else 'fundida errado'}"
+                    # correta se o id final é a entidade do gabarito com esse nome ou alias
+                    right = next((g['id'] for g in seed['entities'] if g['name'] == e['name'] or e['name'] in g.get('aliases', [])), None)
+                    verdict = 'correta' if rid == right or (right is None and rid in gold_entities) else 'errada'
+                    key = f'{method}: {verdict}'
                     report['resolucao'][key] = report['resolucao'].get(key, 0) + 1
+                    report.setdefault('decisoes', []).append({'nome': e['name'], 'rotulo': e['label'], 'id_final': rid,
+                                                              'metodo': method, 'avaliacao': verdict})
                 if method == 'novo':
                     resolver.remember(rid, e['name'], e['label'])
                     labels.setdefault(rid, e['label'])
@@ -113,8 +125,9 @@ def main():
     for k, label in names.items():
         m = report['total'][k]
         md.append(f"| {label} | {m['precisao']:.2f} | {m['revocacao']:.2f} | {m['f1']:.2f} | {m['acertos']} / {m['extraidas']} / {m['gabarito']} |")
-    md += ['', '**Decisões da resolução de entidades** (ids extraídos diferentes do id canônico final):', '']
+    md += ['', '**Decisões da resolução de entidades** (entidades extraídas cujo id canônico difere do id final):', '']
     md += [f'- {k}: {v}' for k, v in sorted(report['resolucao'].items())] or ['- nenhuma']
+    md += [f"  - \"{d['nome']}\" ({d['rotulo']}) → `{d['id_final']}` por {d['metodo']}: {d['avaliacao']}" for d in report.get('decisoes', [])]
     if report['falhas']:
         md += ['', f"Trechos com falha de extração: {len(report['falhas'])}."]
     (OUT / 'extracao.md').write_text('\n'.join(md) + '\n', encoding='utf8')

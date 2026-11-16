@@ -40,7 +40,7 @@ O Compose coordena cinco serviços: `neo4j`, `ollama`, `models`, `seed` e `app`.
 
 - Git e Docker com Compose; no Windows, Docker Desktop ativo com containers Linux e WSL 2.
 - Internet na primeira execução para baixar imagens e modelos (vários GB).
-- Memória e espaço disponíveis para Neo4j e os modelos locais. Os testes foram executados em um ambiente Docker com cerca de 15 GiB de memória disponível e execução de IA em CPU; isso não representa um requisito mínimo medido.
+- Memória e espaço disponíveis para Neo4j e os modelos locais. O projeto funcionou com cerca de 15 GiB de memória para o Docker e também com 8 GiB, mas com 8 GiB o servidor do modelo foi encerrado por falta de memória em cerca de 5% das chamadas longas (a resposta mostra "Ollama indisponível"). Recomenda-se reservar 10 GiB ou mais ao Docker. O Compose limita o Neo4j a 1 GiB de heap e o Ollama a uma requisição por vez. A IA roda em CPU.
 
 Não é necessário instalar Python, Neo4j ou Ollama separadamente para usar o Compose.
 
