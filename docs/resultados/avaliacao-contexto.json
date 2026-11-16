@@ -1,0 +1,770 @@
+{
+  "meta": {
+    "data": "2026-11-16 02:56",
+    "modelo": "sem LLM",
+    "embeddings": "nomic-embed-text",
+    "perguntas": 35,
+    "modos": [
+      "graphrag",
+      "vector_only"
+    ]
+  },
+  "resumo": {
+    "graphrag": {
+      "Todas com resposta": {
+        "n": 29,
+        "cobertura_contexto": 0.98,
+        "fonte_recuperada": 1.0
+      },
+      "1 salto": {
+        "n": 20,
+        "cobertura_contexto": 1.0,
+        "fonte_recuperada": 1.0
+      },
+      "2 saltos": {
+        "n": 5,
+        "cobertura_contexto": 0.9,
+        "fonte_recuperada": 1.0
+      },
+      "3+ saltos": {
+        "n": 4,
+        "cobertura_contexto": 0.977,
+        "fonte_recuperada": 1.0
+      },
+      "Sem resposta": {
+        "n": 6,
+        "cobertura_contexto": null,
+        "fonte_recuperada": null
+      }
+    },
+    "vector_only": {
+      "Todas com resposta": {
+        "n": 29,
+        "cobertura_contexto": 0.905,
+        "fonte_recuperada": 1.0
+      },
+      "1 salto": {
+        "n": 20,
+        "cobertura_contexto": 0.933,
+        "fonte_recuperada": 1.0
+      },
+      "2 saltos": {
+        "n": 5,
+        "cobertura_contexto": 0.9,
+        "fonte_recuperada": 1.0
+      },
+      "3+ saltos": {
+        "n": 4,
+        "cobertura_contexto": 0.773,
+        "fonte_recuperada": 1.0
+      },
+      "Sem resposta": {
+        "n": 6,
+        "cobertura_contexto": null,
+        "fonte_recuperada": null
+      }
+    }
+  },
+  "linhas": [
+    {
+      "id": "q01",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.2,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q01",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q02",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.2,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q02",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q03",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q03",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q04",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q04",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q05",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q05",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "pré-requisito direto",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q06",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "dependentes diretos",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q06",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "dependentes diretos",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q07",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "dependentes diretos",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q07",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "dependentes diretos",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q08",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "dependentes diretos",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q08",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "dependentes diretos",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q09",
+      "mode": "graphrag",
+      "hops": 3,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q09",
+      "mode": "vector_only",
+      "hops": 3,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q10",
+      "mode": "graphrag",
+      "hops": 5,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q10",
+      "mode": "vector_only",
+      "hops": 5,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 0.6363636363636364,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q11",
+      "mode": "graphrag",
+      "hops": 5,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q11",
+      "mode": "vector_only",
+      "hops": 5,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q12",
+      "mode": "graphrag",
+      "hops": 6,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 0.9090909090909091,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q12",
+      "mode": "vector_only",
+      "hops": 6,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 0.45454545454545453,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q13",
+      "mode": "graphrag",
+      "hops": 2,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q13",
+      "mode": "vector_only",
+      "hops": 2,
+      "category": "pré-requisitos em cadeia",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 0.5,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q14",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "equivalência",
+      "answerable": true,
+      "segundos": 0.3,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q14",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "equivalência",
+      "answerable": true,
+      "segundos": 0.3,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q15",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "equivalência",
+      "answerable": true,
+      "segundos": 1.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q15",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "equivalência",
+      "answerable": true,
+      "segundos": 0.2,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q16",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "equivalência",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q16",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "equivalência",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q17",
+      "mode": "graphrag",
+      "hops": 2,
+      "category": "equivalência + pré-requisito",
+      "answerable": true,
+      "segundos": 0.2,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q17",
+      "mode": "vector_only",
+      "hops": 2,
+      "category": "equivalência + pré-requisito",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q18",
+      "mode": "graphrag",
+      "hops": 2,
+      "category": "pré-requisito + competência",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 0.5,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q18",
+      "mode": "vector_only",
+      "hops": 2,
+      "category": "pré-requisito + competência",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q19",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "competência",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q19",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "competência",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 0.6666666666666666,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q20",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "competência",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q20",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "competência",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q21",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "matriz",
+      "answerable": true,
+      "segundos": 0.2,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q21",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "matriz",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q22",
+      "mode": "graphrag",
+      "hops": 2,
+      "category": "matriz + documento",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q22",
+      "mode": "vector_only",
+      "hops": 2,
+      "category": "matriz + documento",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q23",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "matriz",
+      "answerable": true,
+      "segundos": 0.2,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q23",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "matriz",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q24",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "instituição",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q24",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "instituição",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q25",
+      "mode": "graphrag",
+      "hops": 2,
+      "category": "regulamento",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q25",
+      "mode": "vector_only",
+      "hops": 2,
+      "category": "regulamento",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q26",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "regulamento (texto)",
+      "answerable": true,
+      "segundos": 0.2,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q26",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "regulamento (texto)",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q27",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "regulamento (texto)",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q27",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "regulamento (texto)",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 0.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q28",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "carga horária (texto)",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q28",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "carga horária (texto)",
+      "answerable": true,
+      "segundos": 0.0,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q29",
+      "mode": "graphrag",
+      "hops": 1,
+      "category": "período (texto)",
+      "answerable": true,
+      "segundos": 0.1,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q29",
+      "mode": "vector_only",
+      "hops": 1,
+      "category": "período (texto)",
+      "answerable": true,
+      "segundos": 0.2,
+      "cobertura_contexto": 1.0,
+      "fonte_recuperada": true
+    },
+    {
+      "id": "q30",
+      "mode": "graphrag",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.0,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q30",
+      "mode": "vector_only",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.0,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q31",
+      "mode": "graphrag",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.0,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q31",
+      "mode": "vector_only",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.0,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q32",
+      "mode": "graphrag",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.1,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q32",
+      "mode": "vector_only",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.0,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q33",
+      "mode": "graphrag",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.0,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q33",
+      "mode": "vector_only",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.0,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q34",
+      "mode": "graphrag",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.1,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q34",
+      "mode": "vector_only",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.0,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q35",
+      "mode": "graphrag",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.1,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    },
+    {
+      "id": "q35",
+      "mode": "vector_only",
+      "hops": 0,
+      "category": "sem resposta",
+      "answerable": false,
+      "segundos": 0.1,
+      "cobertura_contexto": null,
+      "fonte_recuperada": null
+    }
+  ]
+}

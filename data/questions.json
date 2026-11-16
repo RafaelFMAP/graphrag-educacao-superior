@@ -1,102 +1,549 @@
 [
   {
-    "question": "Quais são os pré-requisitos de Projeto Integrador?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q01",
+    "question": "Quais são os pré-requisitos diretos de Projeto Integrador?",
+    "category": "pré-requisito direto",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Banco de Dados",
+      "Estruturas de Dados"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Quais disciplinas antecedem indiretamente Projeto Integrador?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q02",
+    "question": "Quais são os pré-requisitos diretos de Desenvolvimento Web?",
+    "category": "pré-requisito direto",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Banco de Dados",
+      "Programação Orientada a Objetos"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Qual matriz o curso adota?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q03",
+    "question": "Quais são os pré-requisitos diretos de Inteligência Artificial?",
+    "category": "pré-requisito direto",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Probabilidade e Estatística",
+      "Projeto e Análise de Algoritmos"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Quais disciplinas estão na Matriz 2026?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q04",
+    "question": "Quais são os pré-requisitos diretos de Visão Computacional?",
+    "category": "pré-requisito direto",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Aprendizado de Máquina",
+      "Computação Gráfica"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Quais documentos fundamentam a matriz curricular?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q05",
+    "question": "Quais são os pré-requisitos diretos de Banco de Dados?",
+    "category": "pré-requisito direto",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Estruturas de Dados"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Qual universidade oferece Ciência da Computação?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q06",
+    "question": "Quais disciplinas exigem Algoritmos como pré-requisito?",
+    "category": "dependentes diretos",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Estruturas de Dados",
+      "Programação Orientada a Objetos"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Qual é o pré-requisito direto de Estruturas de Dados?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q07",
+    "question": "Quais disciplinas exigem Aprendizado de Máquina como pré-requisito?",
+    "category": "dependentes diretos",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Processamento de Linguagem Natural",
+      "Tendências em Ciência da Computação",
+      "Visão Computacional"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Algoritmos é pré-requisito indireto de Projeto Integrador?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q08",
+    "question": "Quais disciplinas exigem Engenharia de Software como pré-requisito?",
+    "category": "dependentes diretos",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Gestão de Projetos",
+      "Interação Humano-Computador",
+      "Trabalho de Conclusão de Curso I"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Qual documento define a Matriz 2026?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q09",
+    "question": "Quais são todos os pré-requisitos, diretos e indiretos, de Projeto Integrador?",
+    "category": "pré-requisitos em cadeia",
+    "hops": 3,
+    "answerable": true,
+    "expected_entities": [
+      "Algoritmos",
+      "Banco de Dados",
+      "Estruturas de Dados"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Banco de Dados é requisito de Projeto Integrador?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q10",
+    "question": "Quais são todos os pré-requisitos, diretos e indiretos, de Grafos de Conhecimento?",
+    "category": "pré-requisitos em cadeia",
+    "hops": 5,
+    "answerable": true,
+    "expected_entities": [
+      "Algoritmos",
+      "Banco de Dados",
+      "Banco de Dados Avançado",
+      "Cálculo I",
+      "Cálculo II",
+      "Estruturas de Dados",
+      "Estruturas de Dados Avançadas",
+      "Inteligência Artificial",
+      "Matemática Discreta",
+      "Probabilidade e Estatística",
+      "Projeto e Análise de Algoritmos"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Quais disciplinas não têm pré-requisitos explícitos no conjunto?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q11",
+    "question": "Quais são todos os pré-requisitos, diretos e indiretos, de Trabalho de Conclusão de Curso II?",
+    "category": "pré-requisitos em cadeia",
+    "hops": 5,
+    "answerable": true,
+    "expected_entities": [
+      "Algoritmos",
+      "Banco de Dados",
+      "Engenharia de Software",
+      "Estruturas de Dados",
+      "Programação Orientada a Objetos",
+      "Projeto Integrador",
+      "Trabalho de Conclusão de Curso I"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Há regra de equivalência entre disciplinas?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q12",
+    "question": "Quais são todos os pré-requisitos, diretos e indiretos, de Processamento de Linguagem Natural?",
+    "category": "pré-requisitos em cadeia",
+    "hops": 6,
+    "answerable": true,
+    "expected_entities": [
+      "Algoritmos",
+      "Aprendizado de Máquina",
+      "Cálculo I",
+      "Cálculo II",
+      "Estruturas de Dados",
+      "Estruturas de Dados Avançadas",
+      "Inteligência Artificial",
+      "Matemática Discreta",
+      "Probabilidade e Estatística",
+      "Projeto e Análise de Algoritmos",
+      "Álgebra Linear"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Existe versão posterior ao PPC 2026?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q13",
+    "question": "Quais são todos os pré-requisitos, diretos e indiretos, de Compiladores?",
+    "category": "pré-requisitos em cadeia",
+    "hops": 2,
+    "answerable": true,
+    "expected_entities": [
+      "Matemática Discreta",
+      "Teoria da Computação"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Quais regulamentos são citados?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q14",
+    "question": "A qual disciplina da Matriz 2022 equivale Banco de Dados?",
+    "category": "equivalência",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Banco de Dados I"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2022"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Quais são as disciplinas exigidas em cadeia para Projeto Integrador?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q15",
+    "question": "A qual disciplina da Matriz 2022 equivale Inteligência Artificial?",
+    "category": "equivalência",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Sistemas Inteligentes"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2022"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Quais cursos adotam a Matriz 2026?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q16",
+    "question": "A qual disciplina da Matriz 2022 equivale Teoria da Computação?",
+    "category": "equivalência",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Linguagens Formais"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2022"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Que disciplinas do currículo exigem Algoritmos?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q17",
+    "question": "Na Matriz 2022, qual é o pré-requisito da disciplina equivalente a Estruturas de Dados Avançadas?",
+    "category": "equivalência + pré-requisito",
+    "hops": 2,
+    "answerable": true,
+    "expected_entities": [
+      "Estruturas de Dados I"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2022"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Que documentos sustentam o pré-requisito de Estruturas de Dados?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q18",
+    "question": "Quais competências são desenvolvidas pelos pré-requisitos diretos de Inteligência Artificial?",
+    "category": "pré-requisito + competência",
+    "hops": 2,
+    "answerable": true,
+    "expected_entities": [
+      "Pensamento Computacional",
+      "Raciocínio Lógico-Matemático"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "O grafo possui dados de estudantes individuais?",
-    "expected_sources": [],
-    "needs_manual_review": true
+    "id": "q19",
+    "question": "Quais disciplinas desenvolvem a competência Modelagem de Dados?",
+    "category": "competência",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Banco de Dados",
+      "Banco de Dados Avançado",
+      "Grafos de Conhecimento"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
   },
   {
-    "question": "Há evidência suficiente para decidir uma dispensa de disciplina?",
+    "id": "q20",
+    "question": "Quais competências a disciplina Projeto Integrador desenvolve?",
+    "category": "competência",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Comunicação Técnica",
+      "Desenvolvimento de Software"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q21",
+    "question": "Qual matriz curricular o curso de Ciência da Computação adota?",
+    "category": "matriz",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Matriz 2026"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q22",
+    "question": "Qual documento define a matriz curricular adotada pelo curso de Ciência da Computação?",
+    "category": "matriz + documento",
+    "hops": 2,
+    "answerable": true,
+    "expected_entities": [
+      "PPC 2026"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q23",
+    "question": "Qual matriz curricular a Matriz 2026 substitui?",
+    "category": "matriz",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Matriz 2022"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q24",
+    "question": "Qual instituição oferece o curso de Ciência da Computação e em qual campus?",
+    "category": "instituição",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Campus Central",
+      "Universidade Exemplo"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q25",
+    "question": "Quais atividades complementares são reconhecidas pelo Regulamento Acadêmico 2026?",
+    "category": "regulamento",
+    "hops": 2,
+    "answerable": true,
+    "expected_entities": [
+      "Extensão Universitária",
+      "Iniciação Científica",
+      "Maratona de Programação",
+      "Monitoria"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "regulamento-academico-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q26",
+    "question": "Qual artigo do regulamento trata da quebra de pré-requisito?",
+    "category": "regulamento (texto)",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [
+      "Art. 15"
+    ],
+    "expected_facts": [],
+    "expected_sources": [
+      "regulamento-academico-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q27",
+    "question": "Qual compatibilidade mínima de carga horária e conteúdo é exigida para dispensa por aproveitamento de estudos?",
+    "category": "regulamento (texto)",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [],
+    "expected_facts": [
+      "75%"
+    ],
+    "expected_sources": [
+      "regulamento-academico-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q28",
+    "question": "Quantas horas de atividades complementares o curso de Ciência da Computação exige?",
+    "category": "carga horária (texto)",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [],
+    "expected_facts": [
+      "200"
+    ],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q29",
+    "question": "Em qual período da Matriz 2026 é oferecida a disciplina Compiladores?",
+    "category": "período (texto)",
+    "hops": 1,
+    "answerable": true,
+    "expected_entities": [],
+    "expected_facts": [
+      "5º"
+    ],
+    "expected_sources": [
+      "ppc-2026"
+    ],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q30",
+    "question": "Qual é a nota da estudante Maria em Banco de Dados?",
+    "category": "sem resposta",
+    "hops": 0,
+    "answerable": false,
+    "expected_entities": [],
+    "expected_facts": [],
     "expected_sources": [],
-    "needs_manual_review": true
+    "needs_manual_review": false
+  },
+  {
+    "id": "q31",
+    "question": "O estudante João pode ser dispensado de Banco de Dados? Decida o caso dele.",
+    "category": "sem resposta",
+    "hops": 0,
+    "answerable": false,
+    "expected_entities": [],
+    "expected_facts": [],
+    "expected_sources": [],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q32",
+    "question": "Quem é o coordenador do curso de Ciência da Computação?",
+    "category": "sem resposta",
+    "hops": 0,
+    "answerable": false,
+    "expected_entities": [],
+    "expected_facts": [],
+    "expected_sources": [],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q33",
+    "question": "Quais são os pré-requisitos de Computação Quântica?",
+    "category": "sem resposta",
+    "hops": 0,
+    "answerable": false,
+    "expected_entities": [],
+    "expected_facts": [],
+    "expected_sources": [],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q34",
+    "question": "Qual é a ementa de Física Quântica?",
+    "category": "sem resposta",
+    "hops": 0,
+    "answerable": false,
+    "expected_entities": [],
+    "expected_facts": [],
+    "expected_sources": [],
+    "needs_manual_review": false
+  },
+  {
+    "id": "q35",
+    "question": "Quais disciplinas a Matriz 2030 inclui?",
+    "category": "sem resposta",
+    "hops": 0,
+    "answerable": false,
+    "expected_entities": [],
+    "expected_facts": [],
+    "expected_sources": [],
+    "needs_manual_review": false
   }
 ]

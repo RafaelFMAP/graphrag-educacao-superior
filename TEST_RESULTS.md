@@ -1,54 +1,40 @@
-# Resultados dos testes — 15/11/2026 (America/Sao_Paulo)
+# Resultados dos testes — 16/11/2026 (America/Sao_Paulo)
 
-Ambiente: Windows com WSL 2; Docker Desktop 4.99.0; Docker Engine 29.9.3;
-Compose 5.7.0. Python local 3.14 e Python 3.12 nas imagens Linux.
-
-Resultados de CADA projeto (construção civil e educação superior):
+Ambiente desta rodada: macOS (Apple Silicon) com Docker Engine 29.5.3 e 8 GiB de memória para o Docker; Python 3.12 local e nas imagens Linux; Neo4j 5.26 Community com GDS 2.13.15; Ollama com `llama3.2:3b` e `nomic-embed-text` em CPU.
 
 | Verificação | Resultado |
 |---|---|
-| Testes unitários no Windows | 11/11 passaram |
-| Testes unitários no container Linux final | 11/11 passaram, sem avisos do pytest |
-| docker compose config -q | Passou |
-| docker compose build | Passou (app e seed) |
-| Inicialização completa do Compose | Passou; Neo4j, Ollama e app saudáveis |
-| Download automático dos modelos | Passou; llama3.2:3b e nomic-embed-text |
-| Carga dos dados com embeddings | Passou; 10 entidades e 11 relações por domínio |
-| Busca textual, caminhos e referência de evidência | Passou |
-| Embedding (768 dimensões) e busca vetorial | Passou |
-| Chamada real de geração ao Ollama | Passou |
-| Interface Streamlit via AppTest | Passou; três abas e nenhum erro de aplicação |
-| Endpoint HTTP /_stcore/health | 200, ok em ambas as aplicações |
+| Testes unitários (`python -m pytest -q`) | 75/75 passaram |
+| `docker compose config -q` e `docker compose build` | Passaram |
+| Inicialização completa do Compose (modelos, plugin GDS, seed) | Passou: 75 entidades, 167 relações, 3 documentos e 23 trechos; PageRank e Leiden (9 comunidades, modularidade 0,49) gravados |
+| `smoke.py --llm` | Passou: índices, busca textual e vetorial, cadeias multi-hop, GDS, recusa de escrita na transação de leitura, procedência, consulta pela interface (AppTest), Text2Cypher, citações e confiança |
+| Ingestão real com LLM e resolução de entidades | `ppc-2022.md` reingerido: 0 entidades duplicadas (75 → 75), nenhum nó com rótulo misturado |
+| Avaliação GraphRAG x baseline vetorial | Ver `docs/resultados/avaliacao.md` (70 execuções válidas) |
+| Avaliação da extração | Ver `docs/resultados/extracao.md` |
 
-Comandos principais executados em cada pasta:
+## Resultados principais
 
-```bash
-python -m pytest -q
-docker compose config -q
-docker compose build
-docker compose up -d --wait --wait-timeout 600
-docker compose exec -T app python smoke.py --llm
-docker compose --profile test run --build --rm --no-deps tests
-```
+| Métrica (29 perguntas com resposta) | GraphRAG híbrido | Somente vetorial |
+|---|---|---|
+| Cobertura da resposta | 0,89 | 0,76 |
+| Cobertura da resposta, 3+ saltos | 0,72 | 0,35 |
+| Respostas exatas | 0,59 | 0,41 |
+| Respostas com entidade não esperada | 0,34 | 0,55 |
+| Citações válidas | 0,99 | 0,48 |
+| Abstenção correta (6 perguntas sem resposta) | 6/6 | 6/6 |
 
-Também passou a execução sem modelos: seed.py --no-embeddings e smoke.py.
-O AppTest emite um aviso de ScriptRunContext ao iniciar fora de uma sessão
-interativa; não houve erro da interface.
+Extração (NER/RE com `llama3.2:3b`): entidades com F1 0,73 (precisão 0,86); relações com precisão 0,53, que sobe para 0,80 com a assinatura de tipos, mas revocação baixa (0,12).
 
-Correções e adições: Dockerfile com usuário sem privilégios e healthcheck;
-Compose com banco, Ollama, download dos modelos, seed, aplicação e perfil de testes;
-volumes persistentes, ordem de inicialização e portas locais configuráveis;
-.dockerignore; teste de integração smoke.py; validação de parâmetros de chunks_of
-para impedir loop infinito quando overlap >= size (cinco casos de regressão).
-A permissão da pasta /app também foi ajustada para permitir o cache do pytest.
+## Problemas encontrados e corrigidos nesta rodada
 
-Limites: estes testes confirmam funcionamento técnico em dados sintéticos, não
-qualidade acadêmica das respostas ou correção semântica da extração por LLM.
-evaluate.py foi executado e informou que as 20 perguntas ainda exigem revisão
-humana e fontes esperadas; não há métricas de qualidade calculadas.
-Os modelos e imagens são baixados durante a execução e não estão nos ZIPs.
-As dependências usam faixas de versões e Ollama usa latest; futuras instalações
-podem resolver versões diferentes. Modelos executados em CPU.
+- Com 8 GiB para o Docker, o servidor do modelo foi encerrado por falta de memória (SIGKILL) em 6 de 70 respostas da primeira avaliação. O Compose passou a limitar a memória do Neo4j e a usar `OLLAMA_NUM_PARALLEL=1`; a avaliação repete chamadas que falham por infraestrutura e as exclui das médias se continuarem falhando. As 6 execuções foram refeitas com sucesso.
+- Text2Cypher: `Query(timeout)` não funciona dentro de `execute_read`; trocado por `unit_of_work`.
+- Caminho mínimo: erro interno do Neo4j ao fatiar `nodes(p)[1..-1]` dentro de `shortestPath`; consulta reescrita.
+- Resolução de entidades: ordinais não eram reconhecidos como numerais (`7º período` fundido com `6º período`).
+- Extração: limite de tokens (`num_predict`) contra geração sem fim no modo JSON estruturado.
 
-Referência para a ordem de inicialização:
-https://docs.docker.com/compose/how-tos/startup-order/
+## Limites
+
+Estes testes confirmam o funcionamento técnico e medem a qualidade num corpus sintético pequeno; não substituem a revisão humana das relações extraídas nem uma avaliação com documentos reais. As dependências usam faixas de versões e o Ollama usa `latest`; instalações futuras podem resolver versões diferentes. Os modelos e imagens são baixados durante a execução.
+
+Referência para a ordem de inicialização: https://docs.docker.com/compose/how-tos/startup-order/
