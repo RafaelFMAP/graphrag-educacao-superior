@@ -45,9 +45,19 @@ def coverage(expected_names, facts, mentioned_names, text):
     return sum(items) / len(items) if items else None
 
 
-def evaluate_item(store, item, mode, catalog, use_llm):
+INFRA_FAILURE = 'Ollama indisponível'
+
+
+def evaluate_item(store, item, mode, catalog, use_llm, retries=1):
     t0 = time.time()
     result = answer(store, item['question'], use_llm=use_llm, mode=mode)
+    for _ in range(retries):
+        # Falha de infraestrutura (timeout, modelo encerrado por falta de memória) não é resposta do método
+        if not result['answer'].startswith(INFRA_FAILURE):
+            break
+        time.sleep(10)
+        t0 = time.time()
+        result = answer(store, item['question'], use_llm=use_llm, mode=mode)
     seconds = time.time() - t0
     context_text, _, _ = format_context(result['context'], result.get('cypher'))
     by_id = {e['id']: e['name'] for e in catalog}
@@ -62,6 +72,9 @@ def evaluate_item(store, item, mode, catalog, use_llm):
     if not use_llm:
         return row
     text = result['answer']
+    if text.startswith(INFRA_FAILURE):
+        row.update({'resposta': text, 'falha_infra': True})
+        return row
     mentioned = {by_id[i] for i in find_mentions(text, catalog)} - in_question
     unexpected = sorted(mentioned - expected)
     check = result.get('citations') or {'cited': [], 'valid': []}
@@ -92,7 +105,8 @@ def summarize(rows, use_llm):
               'Sem resposta': lambda r: not r['answerable']}
     summary = {}
     for mode in MODES:
-        mode_rows = [r for r in rows if r['mode'] == mode]
+        # execuções que falharam por infraestrutura ficam fora das médias (contadas em 'falhas_infra')
+        mode_rows = [r for r in rows if r['mode'] == mode and not r.get('falha_infra')]
         if not mode_rows:
             continue
         summary[mode] = {}
@@ -140,6 +154,11 @@ def markdown(summary, meta):
         for c in used:
             lines.append(f'| {c} | ' + ' | '.join(fmt(summary[m][group].get(c)) for m in present) + ' |')
         lines.append('')
+    if meta.get('falhas_infra'):
+        lines += [f"Execuções excluídas por falha de infraestrutura (timeout ou modelo sem memória): {meta['falhas_infra']}.", '']
+    if meta.get('reavaliadas'):
+        lines += [f"Reavaliadas depois de falha de infraestrutura na execução original ({meta['data_original']}): "
+                  f"{', '.join(meta['reavaliadas'])}.", '']
     lines += ['Definições das métricas no cabeçalho de `evaluate.py`. As respostas completas estão em `avaliacao.json`.', '']
     return '\n'.join(lines)
 
@@ -149,9 +168,12 @@ def main():
     parser.add_argument('--modes', nargs='+', default=list(MODES), choices=list(MODES))
     parser.add_argument('--no-llm', action='store_true', help='só métricas de recuperação/contexto')
     parser.add_argument('--limit', type=int, default=None)
+    parser.add_argument('--ids', nargs='+', help='reavalia só estas perguntas e atualiza o resultado anterior')
     args = parser.parse_args()
     items = json.loads((ROOT / 'data' / 'questions.json').read_text(encoding='utf8'))
     items = [x for x in items if not x.get('needs_manual_review', True)][:args.limit]
+    if args.ids:
+        items = [x for x in items if x['id'] in args.ids]
     if not items:
         print('Nenhuma pergunta revisada em data/questions.json.')
         return
@@ -172,9 +194,19 @@ def main():
     from config import OLLAMA_MODEL, OLLAMA_EMBED_MODEL
     meta = {'data': time.strftime('%Y-%m-%d %H:%M'), 'modelo': OLLAMA_MODEL if use_llm else 'sem LLM',
             'embeddings': OLLAMA_EMBED_MODEL, 'perguntas': len(items), 'modos': args.modes}
+    suffix = '' if use_llm else '-contexto'
+    previous = OUT / f'avaliacao{suffix}.json'
+    if args.ids and previous.exists():
+        old = json.loads(previous.read_text(encoding='utf8'))
+        redone = {(r['id'], r['mode']) for r in rows}
+        rows = [r for r in old['linhas'] if (r['id'], r['mode']) not in redone] + rows
+        order = {x['id']: i for i, x in enumerate(json.loads((ROOT / 'data' / 'questions.json').read_text(encoding='utf8')))}
+        rows.sort(key=lambda r: (order.get(r['id'], 0), r['mode'] != 'graphrag'))
+        meta.update({'perguntas': old['meta']['perguntas'], 'modos': old['meta']['modos'],
+                     'reavaliadas': sorted(args.ids), 'data_original': old['meta']['data']})
+    meta['falhas_infra'] = sum(1 for r in rows if r.get('falha_infra'))
     summary = summarize(rows, use_llm)
     OUT.mkdir(parents=True, exist_ok=True)
-    suffix = '' if use_llm else '-contexto'
     (OUT / f'avaliacao{suffix}.json').write_text(json.dumps({'meta': meta, 'resumo': summary, 'linhas': rows},
                                                             ensure_ascii=False, indent=2), encoding='utf8')
     (OUT / f'avaliacao{suffix}.md').write_text(markdown(summary, meta), encoding='utf8')

@@ -47,3 +47,12 @@ def test_gold_catalog_mimics_neo4j_score():
     cat = GoldCatalog([{'id': 'a', 'name': 'A', 'label': 'Disciplina'}], [[1.0, 0.0]])
     assert cat.vector_entities([1.0, 0.0])[0]['score'] == 1.0
     assert cat.vector_entities([-1.0, 0.0])[0]['score'] == 0.0
+
+
+def test_infra_failures_are_excluded_from_means():
+    base = {'mode': 'graphrag', 'hops': 1, 'answerable': True, 'cobertura_contexto': 1.0, 'fonte_recuperada': True}
+    rows = [{**base, 'cobertura_resposta': 1.0, 'precisao_entidades': 1.0, 'nao_esperadas': [], 'citacoes': 1,
+             'citacoes_validas': 1, 'segundos': 1.0, 'exata': True},
+            {**base, 'cobertura_contexto': 0.0, 'falha_infra': True, 'resposta': 'Ollama indisponível (500)', 'segundos': 0.3}]
+    s = summarize(rows, use_llm=True)['graphrag']['Todas com resposta']
+    assert s['n'] == 1 and s['cobertura_contexto'] == 1.0
