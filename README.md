@@ -101,12 +101,14 @@ Cada domínio tem seu próprio nome de projeto Compose e volumes separados. Defi
 
 ## Como usar
 
-1. Abra a aplicação e use a aba **Perguntas** para consultar os dados de demonstração.
-2. Examine os trechos, IDs e relações usados como contexto. Desmarque **Gerar resposta com Ollama** para visualizar as evidências sem gerar uma resposta.
-3. Na aba **Ingestão de documentos**, envie PDF, TXT ou MD e informe a versão. As opções de extração e embeddings podem ser desativadas.
-4. Na aba **Explorar caminhos**, informe os IDs das entidades desejadas.
+1. Abra a aplicação e use a aba **Perguntas**. Escolha entre **GraphRAG híbrido** e **Somente vetorial (baseline)** para comparar as abordagens.
+2. Leia a resposta e as citações ([T#], [P#], [C#], [G#]). Acima do grafo aparecem o **nível de confiança** (com os sinais que o compõem) e a contagem de citações válidas e inválidas.
+3. Explore o **subgrafo interativo**: cor = comunidade (Leiden), tamanho = PageRank, estrela = entidade da pergunta, borda escura = entidade citada; passe o mouse sobre uma aresta para ver a frase de evidência.
+4. Nas abas abaixo do grafo, consulte as **evidências numeradas**, os **nós consultados** (com PageRank e comunidade), as **consultas Cypher** executadas (Text2Cypher e consultas-modelo) e os **trechos** usados. Desmarque **Gerar resposta com Ollama** para ver só as evidências.
+5. Na aba **Ingestão de documentos**, envie PDF, TXT ou MD e informe a versão. O resultado mostra as decisões de resolução de entidades e as relações recusadas pela assinatura de tipos; o PageRank e as comunidades são recalculados.
+6. Na aba **Explorar caminhos**, escolha duas entidades pelo nome para ver o caminho mínimo entre elas, e consulte as entidades mais centrais.
 
-Por exemplo: origem `projeto-integrador` e destino `algoritmos` mostram uma dependência indireta entre disciplinas.
+Por exemplo: origem `Projeto Integrador` e destino `Algoritmos` mostram uma dependência indireta entre disciplinas.
 
 ### Perguntas de exemplo
 
@@ -242,6 +244,7 @@ As consultas Cypher usam parâmetros e relações/rótulos validados por lista p
 
 ```text
 app.py                 Interface Streamlit
+graph_view.py          Subgrafo interativo (pyvis / vis-network)
 config.py              Configuração e domínio
 domain.json            Rótulos, relações e aviso do domínio
 pipeline.py            Leitura, divisão em trechos, extração e ingestão

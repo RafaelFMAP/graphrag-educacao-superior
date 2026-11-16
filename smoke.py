@@ -63,6 +63,14 @@ def main():
         assert not ui.exception, str(ui.exception)
         assert not ui.error, str(ui.error)
         assert len(ui.tabs) == 3, 'Expected three UI tabs'
+        # Consulta pela interface, sem LLM: resposta, confiança, subgrafo e abas de rastreabilidade
+        ui.text_input[0].input(question).run(timeout=30)
+        ui.checkbox[0].uncheck().run(timeout=30)
+        ui.button[0].click().run(timeout=60)
+        assert not ui.exception, str(ui.exception)
+        assert any(m.label == 'Confiança' for m in ui.metric), 'Confidence not shown'
+        assert len(ui.tabs) >= 7, 'Traceability tabs missing'
+        assert any('cypher' in c.language for c in ui.code), 'Executed Cypher not shown'
         print('PASS: Streamlit UI, seed, indexes, text retrieval, graph traversal, chains, GDS, read-only Cypher, provenance, answer' +
               (', embedding, vector search, LLM, Text2Cypher, citations, confidence' if options.llm else ' (LLM not tested)'))
     finally:

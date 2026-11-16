@@ -210,12 +210,12 @@ ORDER BY hops, pagerank DESC LIMIT $limit"""
         if outgoing:
             query = f"""MATCH p=(a:Entity)-[:`{relation}`*1..{int(max_hops)}]->(x:Entity)
                 WHERE a.id IN $ids AND (length(p) = {int(max_hops)} OR NOT (x)-[:`{relation}`]->(:Entity))
-                RETURN a.name AS anchor, [n IN nodes(p) | n.name] AS nodes, length(p) AS hops
+                RETURN a.name AS anchor, [n IN nodes(p) | n.name] AS nodes, [n IN nodes(p) | n.id] AS ids, length(p) AS hops
                 ORDER BY hops DESC LIMIT $k"""
         else:
             query = f"""MATCH p=(x:Entity)-[:`{relation}`*1..{int(max_hops)}]->(a:Entity)
                 WHERE a.id IN $ids AND (length(p) = {int(max_hops)} OR NOT (:Entity)-[:`{relation}`]->(x))
-                RETURN a.name AS anchor, [n IN nodes(p) | n.name] AS nodes, length(p) AS hops
+                RETURN a.name AS anchor, [n IN nodes(p) | n.name] AS nodes, [n IN nodes(p) | n.id] AS ids, length(p) AS hops
                 ORDER BY hops DESC LIMIT $k"""
         return [{**r, 'relation': relation, 'outgoing': outgoing} for r in self.run(query, ids=list(anchor_ids), k=limit)]
 
