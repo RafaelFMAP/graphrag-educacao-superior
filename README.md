@@ -89,7 +89,7 @@ cp .env.example .env
 
 No Compose, `NEO4J_URI`, `NEO4J_USER` e `OLLAMA_URL` são definidos para a comunicação interna entre os containers. Os endereços locais de `.env.example` destinam-se à execução Python fora dos containers.
 
-Para executar este projeto junto com o outro domínio, acrescente ao `.env` de um deles:
+Para executar este projeto ao lado de outro projeto Compose que use as mesmas portas, acrescente ao `.env`:
 
 ```dotenv
 APP_PORT=8502
@@ -97,7 +97,7 @@ NEO4J_HTTP_PORT=7475
 NEO4J_BOLT_PORT=7688
 ```
 
-Cada domínio tem seu próprio nome de projeto Compose e volumes separados. Defina a senha antes da primeira carga: alterar `.env` não altera a senha já armazenada em um volume Neo4j existente.
+O projeto Compose tem nome e volumes próprios (`graphrag-educacao-superior`). Defina a senha antes da primeira carga: alterar `.env` não altera a senha já armazenada em um volume Neo4j existente.
 
 ## Como usar
 
@@ -299,8 +299,49 @@ docker compose up -d
 
 ## Limitações
 
-Protótipo acadêmico com dados sintéticos. Não oferece autenticação da aplicação, isolamento multiusuário, OCR nem auditoria persistente. Entidades com o mesmo nome podem precisar de identificadores específicos por obra, curso ou versão. Relações extraídas e respostas geradas exigem revisão humana.
-
-A estratégia combina documentos, recuperação híbrida e caminhos no grafo; não implementa um framework KAG completo com regras formais de inferência. As dependências usam faixas de versões e a imagem Ollama usa `latest`, portanto instalações futuras podem resolver versões diferentes. Para reprodução estrita, fixe versões e digests.
+- Protótipo acadêmico com dados sintéticos: os resultados de `docs/resultados/` valem para um corpus pequeno (23 trechos) e não substituem uma avaliação com documentos institucionais reais revisados por especialistas.
+- O modelo padrão (`llama3.2:3b`, em CPU) é pequeno: o Text2Cypher e a extração erram com frequência a direção das relações. A assinatura de tipos e as cadeias calculadas por consultas-modelo reduzem o impacto, mas relações extraídas e respostas geradas exigem revisão humana. Modelos maiores podem ser configurados em `OLLAMA_MODEL`.
+- A confiança é uma heurística transparente, não uma probabilidade calibrada. A verificação de citações confirma que o identificador citado existe no contexto, não que a evidência sustente a afirmação.
+- A estratégia combina documentos, recuperação híbrida, restrições semânticas e cadeias no grafo; não implementa um framework KAG completo com raciocínio simbólico formal.
+- Não há autenticação da aplicação, isolamento multiusuário, OCR nem auditoria persistente.
+- As dependências usam faixas de versões, e as imagens do Ollama usam `latest`; o plugin GDS é baixado na primeira inicialização. Instalações futuras podem resolver versões diferentes; para reprodução estrita, fixe versões e digests.
 
 O arquivo `.env` é ignorado pelo Git. Preserve a confidencialidade dos documentos importados e obtenha autorização para utilizá-los.
+
+## Documentação acadêmica
+
+- `docs/artigo/`: artigo técnico em LaTeX no formato SBC (instruções em `docs/artigo/README.md`).
+- `docs/apresentacao/roteiro.md`: roteiro dos slides, demonstração ao vivo e perguntas prováveis da banca.
+- `docs/mentor-prompt.md`: system prompt oficial do Mentor Técnico e como cada diretriz aparece no projeto.
+
+## Autores
+
+> Preencha com os integrantes do grupo (4 a 6 pessoas), como exige a especificação.
+
+| Integrante | Matrícula | Contribuições |
+|---|---|---|
+| | | |
+
+Disciplina: Tendências em Ciência da Computação · Docente: Ricardo Roberto de Lima · 2026.
+
+## Créditos e licenças de terceiros
+
+O projeto não usa frameworks de orquestração de LLM (LangChain, LlamaIndex); a recuperação, o Text2Cypher e a resolução de entidades foram implementados no próprio repositório. Componentes de terceiros:
+
+| Componente | Uso no projeto | Licença |
+|---|---|---|
+| [Neo4j Community Edition](https://neo4j.com/) 5.26 | Banco de grafos, índices e Cypher | GPLv3 |
+| [Neo4j Graph Data Science](https://neo4j.com/docs/graph-data-science/) (Community) | PageRank e Leiden | GPLv3 |
+| [Neo4j Python Driver](https://github.com/neo4j/neo4j-python-driver) | Acesso ao banco | Apache 2.0 |
+| [Ollama](https://ollama.com/) | Execução local dos modelos | MIT |
+| [Llama 3.2 3B](https://www.llama.com/) (Meta) | Geração, extração e Text2Cypher | Llama 3.2 Community License |
+| [nomic-embed-text](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5) (Nomic AI) | Embeddings de 768 dimensões | Apache 2.0 |
+| [Streamlit](https://streamlit.io/) | Interface | Apache 2.0 |
+| [pyvis](https://github.com/WestHealth/pyvis) e [vis-network](https://github.com/visjs/vis-network) | Subgrafo interativo | BSD-3-Clause; Apache 2.0 ou MIT |
+| [RapidFuzz](https://github.com/rapidfuzz/RapidFuzz) | Similaridade de strings na resolução de entidades | MIT |
+| [pypdf](https://github.com/py-pdf/pypdf) | Leitura de PDF | BSD-3-Clause |
+| requests, python-dotenv, pytest | Utilitários e testes | Apache 2.0, BSD-3-Clause, MIT |
+
+Ideias de método adaptadas (referências completas no artigo): GraphRAG (Edge et al., 2024) para comunidades Leiden, HippoRAG (Gutiérrez et al., 2024) para PageRank na recuperação, KAG (Liang et al., 2024) para restrições de esquema e formas lógicas, e Reciprocal Rank Fusion (Cormack et al., 2009).
+
+Uso de assistentes de IA: partes do código e da documentação foram desenvolvidas com apoio do Claude Code (Anthropic), registrado como coautor nos commits correspondentes.
