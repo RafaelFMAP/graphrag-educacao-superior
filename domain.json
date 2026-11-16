@@ -1,0 +1,32 @@
+{
+  "title": "GraphRAG/KAG — Educação Superior",
+  "domain": "educação superior",
+  "labels": [
+    "Instituicao",
+    "Campus",
+    "Curso",
+    "MatrizCurricular",
+    "Disciplina",
+    "Prerequisito",
+    "Ementa",
+    "Competencia",
+    "Regulamento",
+    "Artigo",
+    "PeriodoLetivo",
+    "AtividadeComplementar",
+    "Documento"
+  ],
+  "relations": [
+    "OFERECE",
+    "ADOTA",
+    "INCLUI",
+    "EXIGE",
+    "POSSUI",
+    "DESENVOLVE",
+    "DEFINE",
+    "SUBSTITUI",
+    "PERTENCE_A",
+    "EQUIVALE_A"
+  ],
+  "warning": "Dados sintéticos. Não substitui orientação da secretaria ou coordenação acadêmica."
+}

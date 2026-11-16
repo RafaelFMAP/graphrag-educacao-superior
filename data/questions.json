@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Quais são os pré-requisitos de Projeto Integrador?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Quais disciplinas antecedem indiretamente Projeto Integrador?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Qual matriz o curso adota?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Quais disciplinas estão na Matriz 2026?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Quais documentos fundamentam a matriz curricular?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Qual universidade oferece Ciência da Computação?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Qual é o pré-requisito direto de Estruturas de Dados?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Algoritmos é pré-requisito indireto de Projeto Integrador?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Qual documento define a Matriz 2026?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Banco de Dados é requisito de Projeto Integrador?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Quais disciplinas não têm pré-requisitos explícitos no conjunto?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Há regra de equivalência entre disciplinas?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Existe versão posterior ao PPC 2026?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Quais regulamentos são citados?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Quais são as disciplinas exigidas em cadeia para Projeto Integrador?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Quais cursos adotam a Matriz 2026?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Que disciplinas do currículo exigem Algoritmos?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Que documentos sustentam o pré-requisito de Estruturas de Dados?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "O grafo possui dados de estudantes individuais?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  },
+  {
+    "question": "Há evidência suficiente para decidir uma dispensa de disciplina?",
+    "expected_sources": [],
+    "needs_manual_review": true
+  }
+]

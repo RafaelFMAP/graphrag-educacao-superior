@@ -1,0 +1,125 @@
+{
+  "entities": [
+    {
+      "label": "Instituicao",
+      "id": "universidade-exemplo",
+      "name": "Universidade Exemplo"
+    },
+    {
+      "label": "Curso",
+      "id": "ciencia-computacao",
+      "name": "Ciência da Computação"
+    },
+    {
+      "label": "MatrizCurricular",
+      "id": "matriz-2026",
+      "name": "Matriz 2026"
+    },
+    {
+      "label": "Disciplina",
+      "id": "algoritmos",
+      "name": "Algoritmos"
+    },
+    {
+      "label": "Disciplina",
+      "id": "estruturas-dados",
+      "name": "Estruturas de Dados"
+    },
+    {
+      "label": "Disciplina",
+      "id": "banco-dados",
+      "name": "Banco de Dados"
+    },
+    {
+      "label": "Disciplina",
+      "id": "projeto-integrador",
+      "name": "Projeto Integrador"
+    },
+    {
+      "label": "Regulamento",
+      "id": "regulamento-2026",
+      "name": "Regulamento Acadêmico 2026"
+    },
+    {
+      "label": "Documento",
+      "id": "ppc-2026",
+      "name": "PPC 2026"
+    },
+    {
+      "label": "Documento",
+      "id": "reg-2026",
+      "name": "Regulamento 2026"
+    }
+  ],
+  "edges": [
+    {
+      "source": "universidade-exemplo",
+      "type": "OFERECE",
+      "target": "ciencia-computacao"
+    },
+    {
+      "source": "ciencia-computacao",
+      "type": "ADOTA",
+      "target": "matriz-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "algoritmos"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "estruturas-dados"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "banco-dados"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "projeto-integrador"
+    },
+    {
+      "source": "estruturas-dados",
+      "type": "EXIGE",
+      "target": "algoritmos"
+    },
+    {
+      "source": "projeto-integrador",
+      "type": "EXIGE",
+      "target": "estruturas-dados"
+    },
+    {
+      "source": "projeto-integrador",
+      "type": "EXIGE",
+      "target": "banco-dados"
+    },
+    {
+      "source": "ppc-2026",
+      "type": "DEFINE",
+      "target": "matriz-2026"
+    },
+    {
+      "source": "reg-2026",
+      "type": "DEFINE",
+      "target": "regulamento-2026"
+    }
+  ],
+  "documents": [
+    {
+      "id": "ppc",
+      "title": "PPC 2026",
+      "text": "O curso Ciência da Computação adota a Matriz 2026. Estruturas de Dados exige Algoritmos. Projeto Integrador exige Estruturas de Dados e Banco de Dados.",
+      "version": "2026"
+    },
+    {
+      "id": "regulamento",
+      "title": "Regulamento 2026",
+      "text": "O Regulamento Acadêmico 2026 descreve procedimentos gerais. Situações individuais dependem da secretaria e coordenação.",
+      "version": "2026"
+    }
+  ]
+}
