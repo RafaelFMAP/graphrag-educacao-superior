@@ -1,125 +1,1673 @@
 {
+  "_comment": "Grafo-gabarito sintético gerado por scripts/gerar_corpus.py. Não edite à mão.",
+  "documents": [
+    {
+      "id": "ppc-2026",
+      "file": "corpus/ppc-2026.md",
+      "title": "PPC de Ciência da Computação 2026",
+      "version": "2026",
+      "entity": "ppc-2026"
+    },
+    {
+      "id": "ppc-2022",
+      "file": "corpus/ppc-2022.md",
+      "title": "PPC de Ciência da Computação 2022",
+      "version": "2022",
+      "entity": "ppc-2022"
+    },
+    {
+      "id": "regulamento-academico-2026",
+      "file": "corpus/regulamento-academico-2026.md",
+      "title": "Regulamento Acadêmico 2026",
+      "version": "2026",
+      "entity": "regulamento-2026"
+    }
+  ],
   "entities": [
     {
-      "label": "Instituicao",
-      "id": "universidade-exemplo",
-      "name": "Universidade Exemplo"
-    },
-    {
-      "label": "Curso",
-      "id": "ciencia-computacao",
-      "name": "Ciência da Computação"
-    },
-    {
-      "label": "MatrizCurricular",
-      "id": "matriz-2026",
-      "name": "Matriz 2026"
-    },
-    {
-      "label": "Disciplina",
-      "id": "algoritmos",
-      "name": "Algoritmos"
-    },
-    {
-      "label": "Disciplina",
-      "id": "estruturas-dados",
-      "name": "Estruturas de Dados"
-    },
-    {
-      "label": "Disciplina",
-      "id": "banco-dados",
-      "name": "Banco de Dados"
-    },
-    {
-      "label": "Disciplina",
-      "id": "projeto-integrador",
-      "name": "Projeto Integrador"
-    },
-    {
-      "label": "Regulamento",
-      "id": "regulamento-2026",
-      "name": "Regulamento Acadêmico 2026"
-    },
-    {
-      "label": "Documento",
       "id": "ppc-2026",
-      "name": "PPC 2026"
+      "name": "PPC 2026",
+      "label": "Documento",
+      "aliases": []
     },
     {
+      "id": "universidade-exemplo",
+      "name": "Universidade Exemplo",
+      "label": "Instituicao",
+      "aliases": []
+    },
+    {
+      "id": "campus-central",
+      "name": "Campus Central",
+      "label": "Campus",
+      "aliases": []
+    },
+    {
+      "id": "ciencia-da-computacao",
+      "name": "Ciência da Computação",
+      "label": "Curso",
+      "aliases": [
+        "Bacharelado em Ciência da Computação"
+      ]
+    },
+    {
+      "id": "matriz-2026",
+      "name": "Matriz 2026",
+      "label": "MatrizCurricular",
+      "aliases": []
+    },
+    {
+      "id": "matriz-2022",
+      "name": "Matriz 2022",
+      "label": "MatrizCurricular",
+      "aliases": []
+    },
+    {
+      "id": "algoritmos",
+      "name": "Algoritmos",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "matematica-discreta",
+      "name": "Matemática Discreta",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "calculo-i",
+      "name": "Cálculo I",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "introducao-a-ciencia-da-computacao",
+      "name": "Introdução à Ciência da Computação",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "comunicacao-e-expressao",
+      "name": "Comunicação e Expressão",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "estruturas-de-dados",
+      "name": "Estruturas de Dados",
+      "label": "Disciplina",
+      "aliases": [
+        "ED"
+      ]
+    },
+    {
+      "id": "programacao-orientada-a-objetos",
+      "name": "Programação Orientada a Objetos",
+      "label": "Disciplina",
+      "aliases": [
+        "POO"
+      ]
+    },
+    {
+      "id": "calculo-ii",
+      "name": "Cálculo II",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "algebra-linear",
+      "name": "Álgebra Linear",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "arquitetura-de-computadores",
+      "name": "Arquitetura de Computadores",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "banco-de-dados",
+      "name": "Banco de Dados",
+      "label": "Disciplina",
+      "aliases": [
+        "BD"
+      ]
+    },
+    {
+      "id": "estruturas-de-dados-avancadas",
+      "name": "Estruturas de Dados Avançadas",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "probabilidade-e-estatistica",
+      "name": "Probabilidade e Estatística",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "sistemas-operacionais",
+      "name": "Sistemas Operacionais",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "engenharia-de-software",
+      "name": "Engenharia de Software",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "projeto-e-analise-de-algoritmos",
+      "name": "Projeto e Análise de Algoritmos",
+      "label": "Disciplina",
+      "aliases": [
+        "PAA"
+      ]
+    },
+    {
+      "id": "redes-de-computadores",
+      "name": "Redes de Computadores",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "teoria-da-computacao",
+      "name": "Teoria da Computação",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "desenvolvimento-web",
+      "name": "Desenvolvimento Web",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "projeto-integrador",
+      "name": "Projeto Integrador",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "compiladores",
+      "name": "Compiladores",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "inteligencia-artificial",
+      "name": "Inteligência Artificial",
+      "label": "Disciplina",
+      "aliases": [
+        "IA"
+      ]
+    },
+    {
+      "id": "computacao-grafica",
+      "name": "Computação Gráfica",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "sistemas-distribuidos",
+      "name": "Sistemas Distribuídos",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "interacao-humano-computador",
+      "name": "Interação Humano-Computador",
+      "label": "Disciplina",
+      "aliases": [
+        "IHC"
+      ]
+    },
+    {
+      "id": "aprendizado-de-maquina",
+      "name": "Aprendizado de Máquina",
+      "label": "Disciplina",
+      "aliases": [
+        "Machine Learning"
+      ]
+    },
+    {
+      "id": "seguranca-da-informacao",
+      "name": "Segurança da Informação",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "computacao-em-nuvem",
+      "name": "Computação em Nuvem",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "banco-de-dados-avancado",
+      "name": "Banco de Dados Avançado",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "etica-e-computacao",
+      "name": "Ética e Computação",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "processamento-de-linguagem-natural",
+      "name": "Processamento de Linguagem Natural",
+      "label": "Disciplina",
+      "aliases": [
+        "PLN"
+      ]
+    },
+    {
+      "id": "grafos-de-conhecimento",
+      "name": "Grafos de Conhecimento",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "tendencias-em-ciencia-da-computacao",
+      "name": "Tendências em Ciência da Computação",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "trabalho-de-conclusao-de-curso-i",
+      "name": "Trabalho de Conclusão de Curso I",
+      "label": "Disciplina",
+      "aliases": [
+        "TCC I"
+      ]
+    },
+    {
+      "id": "empreendedorismo",
+      "name": "Empreendedorismo",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "trabalho-de-conclusao-de-curso-ii",
+      "name": "Trabalho de Conclusão de Curso II",
+      "label": "Disciplina",
+      "aliases": [
+        "TCC II"
+      ]
+    },
+    {
+      "id": "estagio-supervisionado",
+      "name": "Estágio Supervisionado",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "topicos-avancados-em-computacao",
+      "name": "Tópicos Avançados em Computação",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "visao-computacional",
+      "name": "Visão Computacional",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "gestao-de-projetos",
+      "name": "Gestão de Projetos",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "pensamento-computacional",
+      "name": "Pensamento Computacional",
+      "label": "Competencia",
+      "aliases": []
+    },
+    {
+      "id": "raciocinio-logico-matematico",
+      "name": "Raciocínio Lógico-Matemático",
+      "label": "Competencia",
+      "aliases": []
+    },
+    {
+      "id": "comunicacao-tecnica",
+      "name": "Comunicação Técnica",
+      "label": "Competencia",
+      "aliases": []
+    },
+    {
+      "id": "desenvolvimento-de-software",
+      "name": "Desenvolvimento de Software",
+      "label": "Competencia",
+      "aliases": []
+    },
+    {
+      "id": "infraestrutura-computacional",
+      "name": "Infraestrutura Computacional",
+      "label": "Competencia",
+      "aliases": []
+    },
+    {
+      "id": "modelagem-de-dados",
+      "name": "Modelagem de Dados",
+      "label": "Competencia",
+      "aliases": []
+    },
+    {
+      "id": "inteligencia-artificial-aplicada",
+      "name": "Inteligência Artificial Aplicada",
+      "label": "Competencia",
+      "aliases": []
+    },
+    {
+      "id": "pesquisa-e-inovacao",
+      "name": "Pesquisa e Inovação",
+      "label": "Competencia",
+      "aliases": []
+    },
+    {
+      "id": "ppc-2022",
+      "name": "PPC 2022",
       "label": "Documento",
-      "id": "reg-2026",
-      "name": "Regulamento 2026"
+      "aliases": []
+    },
+    {
+      "id": "introducao-a-programacao",
+      "name": "Introdução à Programação",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "estruturas-de-dados-i",
+      "name": "Estruturas de Dados I",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "programacao-ii",
+      "name": "Programação II",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "estruturas-de-dados-ii",
+      "name": "Estruturas de Dados II",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "banco-de-dados-i",
+      "name": "Banco de Dados I",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "linguagens-formais",
+      "name": "Linguagens Formais",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "laboratorio-de-projetos",
+      "name": "Laboratório de Projetos",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "sistemas-inteligentes",
+      "name": "Sistemas Inteligentes",
+      "label": "Disciplina",
+      "aliases": []
+    },
+    {
+      "id": "regulamento-2026",
+      "name": "Regulamento 2026",
+      "label": "Documento",
+      "aliases": []
+    },
+    {
+      "id": "regulamento-academico-2026",
+      "name": "Regulamento Acadêmico 2026",
+      "label": "Regulamento",
+      "aliases": [
+        "Regulamento Acadêmico"
+      ]
+    },
+    {
+      "id": "art-12",
+      "name": "Art. 12",
+      "label": "Artigo",
+      "aliases": []
+    },
+    {
+      "id": "art-15",
+      "name": "Art. 15",
+      "label": "Artigo",
+      "aliases": []
+    },
+    {
+      "id": "art-18",
+      "name": "Art. 18",
+      "label": "Artigo",
+      "aliases": []
+    },
+    {
+      "id": "art-21",
+      "name": "Art. 21",
+      "label": "Artigo",
+      "aliases": []
+    },
+    {
+      "id": "art-25",
+      "name": "Art. 25",
+      "label": "Artigo",
+      "aliases": []
+    },
+    {
+      "id": "art-30",
+      "name": "Art. 30",
+      "label": "Artigo",
+      "aliases": []
+    },
+    {
+      "id": "monitoria",
+      "name": "Monitoria",
+      "label": "AtividadeComplementar",
+      "aliases": []
+    },
+    {
+      "id": "iniciacao-cientifica",
+      "name": "Iniciação Científica",
+      "label": "AtividadeComplementar",
+      "aliases": []
+    },
+    {
+      "id": "maratona-de-programacao",
+      "name": "Maratona de Programação",
+      "label": "AtividadeComplementar",
+      "aliases": []
+    },
+    {
+      "id": "extensao-universitaria",
+      "name": "Extensão Universitária",
+      "label": "AtividadeComplementar",
+      "aliases": []
     }
   ],
   "edges": [
     {
       "source": "universidade-exemplo",
+      "type": "POSSUI",
+      "target": "campus-central",
+      "evidence": "A Universidade Exemplo possui o Campus Central, localizado na região metropolitana.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "universidade-exemplo",
       "type": "OFERECE",
-      "target": "ciencia-computacao"
+      "target": "ciencia-da-computacao",
+      "evidence": "A Universidade Exemplo oferece o curso de Ciência da Computação no Campus Central, em regime presencial.",
+      "document": "ppc-2026"
     },
     {
-      "source": "ciencia-computacao",
-      "type": "ADOTA",
-      "target": "matriz-2026"
-    },
-    {
-      "source": "matriz-2026",
-      "type": "INCLUI",
-      "target": "algoritmos"
-    },
-    {
-      "source": "matriz-2026",
-      "type": "INCLUI",
-      "target": "estruturas-dados"
-    },
-    {
-      "source": "matriz-2026",
-      "type": "INCLUI",
-      "target": "banco-dados"
-    },
-    {
-      "source": "matriz-2026",
-      "type": "INCLUI",
-      "target": "projeto-integrador"
-    },
-    {
-      "source": "estruturas-dados",
-      "type": "EXIGE",
-      "target": "algoritmos"
-    },
-    {
-      "source": "projeto-integrador",
-      "type": "EXIGE",
-      "target": "estruturas-dados"
-    },
-    {
-      "source": "projeto-integrador",
-      "type": "EXIGE",
-      "target": "banco-dados"
+      "source": "campus-central",
+      "type": "OFERECE",
+      "target": "ciencia-da-computacao",
+      "evidence": "A Universidade Exemplo oferece o curso de Ciência da Computação no Campus Central, em regime presencial.",
+      "document": "ppc-2026"
     },
     {
       "source": "ppc-2026",
       "type": "DEFINE",
-      "target": "matriz-2026"
+      "target": "matriz-2026",
+      "evidence": "O PPC 2026 define a Matriz 2026, adotada pelo curso de Ciência da Computação a partir do primeiro semestre de 2026.",
+      "document": "ppc-2026"
     },
     {
-      "source": "reg-2026",
+      "source": "ciencia-da-computacao",
+      "type": "ADOTA",
+      "target": "matriz-2026",
+      "evidence": "O PPC 2026 define a Matriz 2026, adotada pelo curso de Ciência da Computação a partir do primeiro semestre de 2026.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "SUBSTITUI",
+      "target": "matriz-2022",
+      "evidence": "A Matriz 2026 substitui a Matriz 2022, que permanece válida apenas para estudantes ingressantes até 2025.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "algoritmos",
+      "evidence": "1º período da Matriz 2026 inclui: Algoritmos; Matemática Discreta; Cálculo I; Introdução à Ciência da Computação; Comunicação e Expressão.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "matematica-discreta",
+      "evidence": "1º período da Matriz 2026 inclui: Algoritmos; Matemática Discreta; Cálculo I; Introdução à Ciência da Computação; Comunicação e Expressão.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "calculo-i",
+      "evidence": "1º período da Matriz 2026 inclui: Algoritmos; Matemática Discreta; Cálculo I; Introdução à Ciência da Computação; Comunicação e Expressão.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "introducao-a-ciencia-da-computacao",
+      "evidence": "1º período da Matriz 2026 inclui: Algoritmos; Matemática Discreta; Cálculo I; Introdução à Ciência da Computação; Comunicação e Expressão.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "comunicacao-e-expressao",
+      "evidence": "1º período da Matriz 2026 inclui: Algoritmos; Matemática Discreta; Cálculo I; Introdução à Ciência da Computação; Comunicação e Expressão.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "estruturas-de-dados",
+      "evidence": "2º período da Matriz 2026 inclui: Estruturas de Dados; Programação Orientada a Objetos; Cálculo II; Álgebra Linear; Arquitetura de Computadores.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "programacao-orientada-a-objetos",
+      "evidence": "2º período da Matriz 2026 inclui: Estruturas de Dados; Programação Orientada a Objetos; Cálculo II; Álgebra Linear; Arquitetura de Computadores.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "calculo-ii",
+      "evidence": "2º período da Matriz 2026 inclui: Estruturas de Dados; Programação Orientada a Objetos; Cálculo II; Álgebra Linear; Arquitetura de Computadores.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "algebra-linear",
+      "evidence": "2º período da Matriz 2026 inclui: Estruturas de Dados; Programação Orientada a Objetos; Cálculo II; Álgebra Linear; Arquitetura de Computadores.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "arquitetura-de-computadores",
+      "evidence": "2º período da Matriz 2026 inclui: Estruturas de Dados; Programação Orientada a Objetos; Cálculo II; Álgebra Linear; Arquitetura de Computadores.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "banco-de-dados",
+      "evidence": "3º período da Matriz 2026 inclui: Banco de Dados; Estruturas de Dados Avançadas; Probabilidade e Estatística; Sistemas Operacionais; Engenharia de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "estruturas-de-dados-avancadas",
+      "evidence": "3º período da Matriz 2026 inclui: Banco de Dados; Estruturas de Dados Avançadas; Probabilidade e Estatística; Sistemas Operacionais; Engenharia de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "probabilidade-e-estatistica",
+      "evidence": "3º período da Matriz 2026 inclui: Banco de Dados; Estruturas de Dados Avançadas; Probabilidade e Estatística; Sistemas Operacionais; Engenharia de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "sistemas-operacionais",
+      "evidence": "3º período da Matriz 2026 inclui: Banco de Dados; Estruturas de Dados Avançadas; Probabilidade e Estatística; Sistemas Operacionais; Engenharia de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "engenharia-de-software",
+      "evidence": "3º período da Matriz 2026 inclui: Banco de Dados; Estruturas de Dados Avançadas; Probabilidade e Estatística; Sistemas Operacionais; Engenharia de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "projeto-e-analise-de-algoritmos",
+      "evidence": "4º período da Matriz 2026 inclui: Projeto e Análise de Algoritmos; Redes de Computadores; Teoria da Computação; Desenvolvimento Web; Projeto Integrador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "redes-de-computadores",
+      "evidence": "4º período da Matriz 2026 inclui: Projeto e Análise de Algoritmos; Redes de Computadores; Teoria da Computação; Desenvolvimento Web; Projeto Integrador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "teoria-da-computacao",
+      "evidence": "4º período da Matriz 2026 inclui: Projeto e Análise de Algoritmos; Redes de Computadores; Teoria da Computação; Desenvolvimento Web; Projeto Integrador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "desenvolvimento-web",
+      "evidence": "4º período da Matriz 2026 inclui: Projeto e Análise de Algoritmos; Redes de Computadores; Teoria da Computação; Desenvolvimento Web; Projeto Integrador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "projeto-integrador",
+      "evidence": "4º período da Matriz 2026 inclui: Projeto e Análise de Algoritmos; Redes de Computadores; Teoria da Computação; Desenvolvimento Web; Projeto Integrador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "compiladores",
+      "evidence": "5º período da Matriz 2026 inclui: Compiladores; Inteligência Artificial; Computação Gráfica; Sistemas Distribuídos; Interação Humano-Computador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "inteligencia-artificial",
+      "evidence": "5º período da Matriz 2026 inclui: Compiladores; Inteligência Artificial; Computação Gráfica; Sistemas Distribuídos; Interação Humano-Computador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "computacao-grafica",
+      "evidence": "5º período da Matriz 2026 inclui: Compiladores; Inteligência Artificial; Computação Gráfica; Sistemas Distribuídos; Interação Humano-Computador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "sistemas-distribuidos",
+      "evidence": "5º período da Matriz 2026 inclui: Compiladores; Inteligência Artificial; Computação Gráfica; Sistemas Distribuídos; Interação Humano-Computador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "interacao-humano-computador",
+      "evidence": "5º período da Matriz 2026 inclui: Compiladores; Inteligência Artificial; Computação Gráfica; Sistemas Distribuídos; Interação Humano-Computador.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "aprendizado-de-maquina",
+      "evidence": "6º período da Matriz 2026 inclui: Aprendizado de Máquina; Segurança da Informação; Computação em Nuvem; Banco de Dados Avançado; Ética e Computação.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "seguranca-da-informacao",
+      "evidence": "6º período da Matriz 2026 inclui: Aprendizado de Máquina; Segurança da Informação; Computação em Nuvem; Banco de Dados Avançado; Ética e Computação.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "computacao-em-nuvem",
+      "evidence": "6º período da Matriz 2026 inclui: Aprendizado de Máquina; Segurança da Informação; Computação em Nuvem; Banco de Dados Avançado; Ética e Computação.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "banco-de-dados-avancado",
+      "evidence": "6º período da Matriz 2026 inclui: Aprendizado de Máquina; Segurança da Informação; Computação em Nuvem; Banco de Dados Avançado; Ética e Computação.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "etica-e-computacao",
+      "evidence": "6º período da Matriz 2026 inclui: Aprendizado de Máquina; Segurança da Informação; Computação em Nuvem; Banco de Dados Avançado; Ética e Computação.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "processamento-de-linguagem-natural",
+      "evidence": "7º período da Matriz 2026 inclui: Processamento de Linguagem Natural; Grafos de Conhecimento; Tendências em Ciência da Computação; Trabalho de Conclusão de Curso I; Empreendedorismo.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "grafos-de-conhecimento",
+      "evidence": "7º período da Matriz 2026 inclui: Processamento de Linguagem Natural; Grafos de Conhecimento; Tendências em Ciência da Computação; Trabalho de Conclusão de Curso I; Empreendedorismo.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "tendencias-em-ciencia-da-computacao",
+      "evidence": "7º período da Matriz 2026 inclui: Processamento de Linguagem Natural; Grafos de Conhecimento; Tendências em Ciência da Computação; Trabalho de Conclusão de Curso I; Empreendedorismo.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "trabalho-de-conclusao-de-curso-i",
+      "evidence": "7º período da Matriz 2026 inclui: Processamento de Linguagem Natural; Grafos de Conhecimento; Tendências em Ciência da Computação; Trabalho de Conclusão de Curso I; Empreendedorismo.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "empreendedorismo",
+      "evidence": "7º período da Matriz 2026 inclui: Processamento de Linguagem Natural; Grafos de Conhecimento; Tendências em Ciência da Computação; Trabalho de Conclusão de Curso I; Empreendedorismo.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "trabalho-de-conclusao-de-curso-ii",
+      "evidence": "8º período da Matriz 2026 inclui: Trabalho de Conclusão de Curso II; Estágio Supervisionado; Tópicos Avançados em Computação; Visão Computacional; Gestão de Projetos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "estagio-supervisionado",
+      "evidence": "8º período da Matriz 2026 inclui: Trabalho de Conclusão de Curso II; Estágio Supervisionado; Tópicos Avançados em Computação; Visão Computacional; Gestão de Projetos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "topicos-avancados-em-computacao",
+      "evidence": "8º período da Matriz 2026 inclui: Trabalho de Conclusão de Curso II; Estágio Supervisionado; Tópicos Avançados em Computação; Visão Computacional; Gestão de Projetos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "visao-computacional",
+      "evidence": "8º período da Matriz 2026 inclui: Trabalho de Conclusão de Curso II; Estágio Supervisionado; Tópicos Avançados em Computação; Visão Computacional; Gestão de Projetos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matriz-2026",
+      "type": "INCLUI",
+      "target": "gestao-de-projetos",
+      "evidence": "8º período da Matriz 2026 inclui: Trabalho de Conclusão de Curso II; Estágio Supervisionado; Tópicos Avançados em Computação; Visão Computacional; Gestão de Projetos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "algoritmos",
+      "type": "DESENVOLVE",
+      "target": "pensamento-computacional",
+      "evidence": "Algoritmos (1º período, 80 h) não exige pré-requisitos. Desenvolve a competência Pensamento Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "matematica-discreta",
+      "type": "DESENVOLVE",
+      "target": "raciocinio-logico-matematico",
+      "evidence": "Matemática Discreta (1º período, 60 h) não exige pré-requisitos. Desenvolve a competência Raciocínio Lógico-Matemático.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "calculo-i",
+      "type": "DESENVOLVE",
+      "target": "raciocinio-logico-matematico",
+      "evidence": "Cálculo I (1º período, 80 h) não exige pré-requisitos. Desenvolve a competência Raciocínio Lógico-Matemático.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "introducao-a-ciencia-da-computacao",
+      "type": "DESENVOLVE",
+      "target": "pensamento-computacional",
+      "evidence": "Introdução à Ciência da Computação (1º período, 40 h) não exige pré-requisitos. Desenvolve a competência Pensamento Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "comunicacao-e-expressao",
+      "type": "DESENVOLVE",
+      "target": "comunicacao-tecnica",
+      "evidence": "Comunicação e Expressão (1º período, 40 h) não exige pré-requisitos. Desenvolve a competência Comunicação Técnica.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "estruturas-de-dados",
+      "type": "EXIGE",
+      "target": "algoritmos",
+      "evidence": "Estruturas de Dados (2º período, 80 h) exige Algoritmos como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "estruturas-de-dados",
+      "type": "DESENVOLVE",
+      "target": "pensamento-computacional",
+      "evidence": "Estruturas de Dados (2º período, 80 h) exige Algoritmos como pré-requisito. Desenvolve a competência Pensamento Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "programacao-orientada-a-objetos",
+      "type": "EXIGE",
+      "target": "algoritmos",
+      "evidence": "Programação Orientada a Objetos (2º período, 80 h) exige Algoritmos como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "programacao-orientada-a-objetos",
+      "type": "DESENVOLVE",
+      "target": "desenvolvimento-de-software",
+      "evidence": "Programação Orientada a Objetos (2º período, 80 h) exige Algoritmos como pré-requisito. Desenvolve a competência Desenvolvimento de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "calculo-ii",
+      "type": "EXIGE",
+      "target": "calculo-i",
+      "evidence": "Cálculo II (2º período, 80 h) exige Cálculo I como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "calculo-ii",
+      "type": "DESENVOLVE",
+      "target": "raciocinio-logico-matematico",
+      "evidence": "Cálculo II (2º período, 80 h) exige Cálculo I como pré-requisito. Desenvolve a competência Raciocínio Lógico-Matemático.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "algebra-linear",
+      "type": "DESENVOLVE",
+      "target": "raciocinio-logico-matematico",
+      "evidence": "Álgebra Linear (2º período, 60 h) não exige pré-requisitos. Desenvolve a competência Raciocínio Lógico-Matemático.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "arquitetura-de-computadores",
+      "type": "EXIGE",
+      "target": "introducao-a-ciencia-da-computacao",
+      "evidence": "Arquitetura de Computadores (2º período, 60 h) exige Introdução à Ciência da Computação como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "arquitetura-de-computadores",
+      "type": "DESENVOLVE",
+      "target": "infraestrutura-computacional",
+      "evidence": "Arquitetura de Computadores (2º período, 60 h) exige Introdução à Ciência da Computação como pré-requisito. Desenvolve a competência Infraestrutura Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "banco-de-dados",
+      "type": "EXIGE",
+      "target": "estruturas-de-dados",
+      "evidence": "Banco de Dados (3º período, 80 h) exige Estruturas de Dados como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "banco-de-dados",
+      "type": "DESENVOLVE",
+      "target": "modelagem-de-dados",
+      "evidence": "Banco de Dados (3º período, 80 h) exige Estruturas de Dados como pré-requisito. Desenvolve a competência Modelagem de Dados.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "estruturas-de-dados-avancadas",
+      "type": "EXIGE",
+      "target": "estruturas-de-dados",
+      "evidence": "Estruturas de Dados Avançadas (3º período, 60 h) exige Estruturas de Dados como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "estruturas-de-dados-avancadas",
+      "type": "DESENVOLVE",
+      "target": "pensamento-computacional",
+      "evidence": "Estruturas de Dados Avançadas (3º período, 60 h) exige Estruturas de Dados como pré-requisito. Desenvolve a competência Pensamento Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "probabilidade-e-estatistica",
+      "type": "EXIGE",
+      "target": "calculo-ii",
+      "evidence": "Probabilidade e Estatística (3º período, 60 h) exige Cálculo II como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "probabilidade-e-estatistica",
+      "type": "DESENVOLVE",
+      "target": "raciocinio-logico-matematico",
+      "evidence": "Probabilidade e Estatística (3º período, 60 h) exige Cálculo II como pré-requisito. Desenvolve a competência Raciocínio Lógico-Matemático.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "sistemas-operacionais",
+      "type": "EXIGE",
+      "target": "arquitetura-de-computadores",
+      "evidence": "Sistemas Operacionais (3º período, 60 h) exige Arquitetura de Computadores como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "sistemas-operacionais",
+      "type": "DESENVOLVE",
+      "target": "infraestrutura-computacional",
+      "evidence": "Sistemas Operacionais (3º período, 60 h) exige Arquitetura de Computadores como pré-requisito. Desenvolve a competência Infraestrutura Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "engenharia-de-software",
+      "type": "EXIGE",
+      "target": "programacao-orientada-a-objetos",
+      "evidence": "Engenharia de Software (3º período, 60 h) exige Programação Orientada a Objetos como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "engenharia-de-software",
+      "type": "DESENVOLVE",
+      "target": "desenvolvimento-de-software",
+      "evidence": "Engenharia de Software (3º período, 60 h) exige Programação Orientada a Objetos como pré-requisito. Desenvolve a competência Desenvolvimento de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "projeto-e-analise-de-algoritmos",
+      "type": "EXIGE",
+      "target": "estruturas-de-dados-avancadas",
+      "evidence": "Projeto e Análise de Algoritmos (4º período, 60 h) exige Estruturas de Dados Avançadas e Matemática Discreta como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "projeto-e-analise-de-algoritmos",
+      "type": "EXIGE",
+      "target": "matematica-discreta",
+      "evidence": "Projeto e Análise de Algoritmos (4º período, 60 h) exige Estruturas de Dados Avançadas e Matemática Discreta como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "projeto-e-analise-de-algoritmos",
+      "type": "DESENVOLVE",
+      "target": "pensamento-computacional",
+      "evidence": "Projeto e Análise de Algoritmos (4º período, 60 h) exige Estruturas de Dados Avançadas e Matemática Discreta como pré-requisitos. Desenvolve a competência Pensamento Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "redes-de-computadores",
+      "type": "EXIGE",
+      "target": "sistemas-operacionais",
+      "evidence": "Redes de Computadores (4º período, 60 h) exige Sistemas Operacionais como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "redes-de-computadores",
+      "type": "DESENVOLVE",
+      "target": "infraestrutura-computacional",
+      "evidence": "Redes de Computadores (4º período, 60 h) exige Sistemas Operacionais como pré-requisito. Desenvolve a competência Infraestrutura Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "teoria-da-computacao",
+      "type": "EXIGE",
+      "target": "matematica-discreta",
+      "evidence": "Teoria da Computação (4º período, 60 h) exige Matemática Discreta como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "teoria-da-computacao",
+      "type": "DESENVOLVE",
+      "target": "raciocinio-logico-matematico",
+      "evidence": "Teoria da Computação (4º período, 60 h) exige Matemática Discreta como pré-requisito. Desenvolve a competência Raciocínio Lógico-Matemático.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "desenvolvimento-web",
+      "type": "EXIGE",
+      "target": "banco-de-dados",
+      "evidence": "Desenvolvimento Web (4º período, 60 h) exige Banco de Dados e Programação Orientada a Objetos como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "desenvolvimento-web",
+      "type": "EXIGE",
+      "target": "programacao-orientada-a-objetos",
+      "evidence": "Desenvolvimento Web (4º período, 60 h) exige Banco de Dados e Programação Orientada a Objetos como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "desenvolvimento-web",
+      "type": "DESENVOLVE",
+      "target": "desenvolvimento-de-software",
+      "evidence": "Desenvolvimento Web (4º período, 60 h) exige Banco de Dados e Programação Orientada a Objetos como pré-requisitos. Desenvolve a competência Desenvolvimento de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "projeto-integrador",
+      "type": "EXIGE",
+      "target": "estruturas-de-dados",
+      "evidence": "Projeto Integrador (4º período, 80 h) exige Estruturas de Dados e Banco de Dados como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "projeto-integrador",
+      "type": "EXIGE",
+      "target": "banco-de-dados",
+      "evidence": "Projeto Integrador (4º período, 80 h) exige Estruturas de Dados e Banco de Dados como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "projeto-integrador",
+      "type": "DESENVOLVE",
+      "target": "desenvolvimento-de-software",
+      "evidence": "Projeto Integrador (4º período, 80 h) exige Estruturas de Dados e Banco de Dados como pré-requisitos. Desenvolve as competências Desenvolvimento de Software e Comunicação Técnica.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "projeto-integrador",
+      "type": "DESENVOLVE",
+      "target": "comunicacao-tecnica",
+      "evidence": "Projeto Integrador (4º período, 80 h) exige Estruturas de Dados e Banco de Dados como pré-requisitos. Desenvolve as competências Desenvolvimento de Software e Comunicação Técnica.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "compiladores",
+      "type": "EXIGE",
+      "target": "teoria-da-computacao",
+      "evidence": "Compiladores (5º período, 60 h) exige Teoria da Computação como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "compiladores",
+      "type": "DESENVOLVE",
+      "target": "desenvolvimento-de-software",
+      "evidence": "Compiladores (5º período, 60 h) exige Teoria da Computação como pré-requisito. Desenvolve a competência Desenvolvimento de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "inteligencia-artificial",
+      "type": "EXIGE",
+      "target": "projeto-e-analise-de-algoritmos",
+      "evidence": "Inteligência Artificial (5º período, 60 h) exige Projeto e Análise de Algoritmos e Probabilidade e Estatística como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "inteligencia-artificial",
+      "type": "EXIGE",
+      "target": "probabilidade-e-estatistica",
+      "evidence": "Inteligência Artificial (5º período, 60 h) exige Projeto e Análise de Algoritmos e Probabilidade e Estatística como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "inteligencia-artificial",
+      "type": "DESENVOLVE",
+      "target": "inteligencia-artificial-aplicada",
+      "evidence": "Inteligência Artificial (5º período, 60 h) exige Projeto e Análise de Algoritmos e Probabilidade e Estatística como pré-requisitos. Desenvolve a competência Inteligência Artificial Aplicada.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "computacao-grafica",
+      "type": "EXIGE",
+      "target": "algebra-linear",
+      "evidence": "Computação Gráfica (5º período, 60 h) exige Álgebra Linear e Estruturas de Dados como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "computacao-grafica",
+      "type": "EXIGE",
+      "target": "estruturas-de-dados",
+      "evidence": "Computação Gráfica (5º período, 60 h) exige Álgebra Linear e Estruturas de Dados como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "computacao-grafica",
+      "type": "DESENVOLVE",
+      "target": "desenvolvimento-de-software",
+      "evidence": "Computação Gráfica (5º período, 60 h) exige Álgebra Linear e Estruturas de Dados como pré-requisitos. Desenvolve a competência Desenvolvimento de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "sistemas-distribuidos",
+      "type": "EXIGE",
+      "target": "redes-de-computadores",
+      "evidence": "Sistemas Distribuídos (5º período, 60 h) exige Redes de Computadores como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "sistemas-distribuidos",
+      "type": "DESENVOLVE",
+      "target": "infraestrutura-computacional",
+      "evidence": "Sistemas Distribuídos (5º período, 60 h) exige Redes de Computadores como pré-requisito. Desenvolve a competência Infraestrutura Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "interacao-humano-computador",
+      "type": "EXIGE",
+      "target": "engenharia-de-software",
+      "evidence": "Interação Humano-Computador (5º período, 40 h) exige Engenharia de Software como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "interacao-humano-computador",
+      "type": "DESENVOLVE",
+      "target": "desenvolvimento-de-software",
+      "evidence": "Interação Humano-Computador (5º período, 40 h) exige Engenharia de Software como pré-requisito. Desenvolve a competência Desenvolvimento de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "aprendizado-de-maquina",
+      "type": "EXIGE",
+      "target": "inteligencia-artificial",
+      "evidence": "Aprendizado de Máquina (6º período, 60 h) exige Inteligência Artificial e Álgebra Linear como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "aprendizado-de-maquina",
+      "type": "EXIGE",
+      "target": "algebra-linear",
+      "evidence": "Aprendizado de Máquina (6º período, 60 h) exige Inteligência Artificial e Álgebra Linear como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "aprendizado-de-maquina",
+      "type": "DESENVOLVE",
+      "target": "inteligencia-artificial-aplicada",
+      "evidence": "Aprendizado de Máquina (6º período, 60 h) exige Inteligência Artificial e Álgebra Linear como pré-requisitos. Desenvolve a competência Inteligência Artificial Aplicada.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "seguranca-da-informacao",
+      "type": "EXIGE",
+      "target": "redes-de-computadores",
+      "evidence": "Segurança da Informação (6º período, 60 h) exige Redes de Computadores como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "seguranca-da-informacao",
+      "type": "DESENVOLVE",
+      "target": "infraestrutura-computacional",
+      "evidence": "Segurança da Informação (6º período, 60 h) exige Redes de Computadores como pré-requisito. Desenvolve a competência Infraestrutura Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "computacao-em-nuvem",
+      "type": "EXIGE",
+      "target": "sistemas-distribuidos",
+      "evidence": "Computação em Nuvem (6º período, 40 h) exige Sistemas Distribuídos como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "computacao-em-nuvem",
+      "type": "DESENVOLVE",
+      "target": "infraestrutura-computacional",
+      "evidence": "Computação em Nuvem (6º período, 40 h) exige Sistemas Distribuídos como pré-requisito. Desenvolve a competência Infraestrutura Computacional.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "banco-de-dados-avancado",
+      "type": "EXIGE",
+      "target": "banco-de-dados",
+      "evidence": "Banco de Dados Avançado (6º período, 60 h) exige Banco de Dados como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "banco-de-dados-avancado",
+      "type": "DESENVOLVE",
+      "target": "modelagem-de-dados",
+      "evidence": "Banco de Dados Avançado (6º período, 60 h) exige Banco de Dados como pré-requisito. Desenvolve a competência Modelagem de Dados.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "etica-e-computacao",
+      "type": "DESENVOLVE",
+      "target": "comunicacao-tecnica",
+      "evidence": "Ética e Computação (6º período, 40 h) não exige pré-requisitos. Desenvolve a competência Comunicação Técnica.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "processamento-de-linguagem-natural",
+      "type": "EXIGE",
+      "target": "aprendizado-de-maquina",
+      "evidence": "Processamento de Linguagem Natural (7º período, 60 h) exige Aprendizado de Máquina como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "processamento-de-linguagem-natural",
+      "type": "DESENVOLVE",
+      "target": "inteligencia-artificial-aplicada",
+      "evidence": "Processamento de Linguagem Natural (7º período, 60 h) exige Aprendizado de Máquina como pré-requisito. Desenvolve a competência Inteligência Artificial Aplicada.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "grafos-de-conhecimento",
+      "type": "EXIGE",
+      "target": "banco-de-dados-avancado",
+      "evidence": "Grafos de Conhecimento (7º período, 60 h) exige Banco de Dados Avançado e Inteligência Artificial como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "grafos-de-conhecimento",
+      "type": "EXIGE",
+      "target": "inteligencia-artificial",
+      "evidence": "Grafos de Conhecimento (7º período, 60 h) exige Banco de Dados Avançado e Inteligência Artificial como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "grafos-de-conhecimento",
+      "type": "DESENVOLVE",
+      "target": "modelagem-de-dados",
+      "evidence": "Grafos de Conhecimento (7º período, 60 h) exige Banco de Dados Avançado e Inteligência Artificial como pré-requisitos. Desenvolve as competências Modelagem de Dados e Inteligência Artificial Aplicada.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "grafos-de-conhecimento",
+      "type": "DESENVOLVE",
+      "target": "inteligencia-artificial-aplicada",
+      "evidence": "Grafos de Conhecimento (7º período, 60 h) exige Banco de Dados Avançado e Inteligência Artificial como pré-requisitos. Desenvolve as competências Modelagem de Dados e Inteligência Artificial Aplicada.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "tendencias-em-ciencia-da-computacao",
+      "type": "EXIGE",
+      "target": "aprendizado-de-maquina",
+      "evidence": "Tendências em Ciência da Computação (7º período, 40 h) exige Aprendizado de Máquina como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "tendencias-em-ciencia-da-computacao",
+      "type": "DESENVOLVE",
+      "target": "pesquisa-e-inovacao",
+      "evidence": "Tendências em Ciência da Computação (7º período, 40 h) exige Aprendizado de Máquina como pré-requisito. Desenvolve a competência Pesquisa e Inovação.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "trabalho-de-conclusao-de-curso-i",
+      "type": "EXIGE",
+      "target": "projeto-integrador",
+      "evidence": "Trabalho de Conclusão de Curso I (7º período, 40 h) exige Projeto Integrador e Engenharia de Software como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "trabalho-de-conclusao-de-curso-i",
+      "type": "EXIGE",
+      "target": "engenharia-de-software",
+      "evidence": "Trabalho de Conclusão de Curso I (7º período, 40 h) exige Projeto Integrador e Engenharia de Software como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "trabalho-de-conclusao-de-curso-i",
+      "type": "DESENVOLVE",
+      "target": "pesquisa-e-inovacao",
+      "evidence": "Trabalho de Conclusão de Curso I (7º período, 40 h) exige Projeto Integrador e Engenharia de Software como pré-requisitos. Desenvolve a competência Pesquisa e Inovação.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "empreendedorismo",
+      "type": "DESENVOLVE",
+      "target": "comunicacao-tecnica",
+      "evidence": "Empreendedorismo (7º período, 40 h) não exige pré-requisitos. Desenvolve a competência Comunicação Técnica.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "trabalho-de-conclusao-de-curso-ii",
+      "type": "EXIGE",
+      "target": "trabalho-de-conclusao-de-curso-i",
+      "evidence": "Trabalho de Conclusão de Curso II (8º período, 40 h) exige Trabalho de Conclusão de Curso I como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "trabalho-de-conclusao-de-curso-ii",
+      "type": "DESENVOLVE",
+      "target": "pesquisa-e-inovacao",
+      "evidence": "Trabalho de Conclusão de Curso II (8º período, 40 h) exige Trabalho de Conclusão de Curso I como pré-requisito. Desenvolve a competência Pesquisa e Inovação.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "estagio-supervisionado",
+      "type": "EXIGE",
+      "target": "projeto-integrador",
+      "evidence": "Estágio Supervisionado (8º período, 160 h) exige Projeto Integrador como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "estagio-supervisionado",
+      "type": "DESENVOLVE",
+      "target": "desenvolvimento-de-software",
+      "evidence": "Estágio Supervisionado (8º período, 160 h) exige Projeto Integrador como pré-requisito. Desenvolve a competência Desenvolvimento de Software.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "topicos-avancados-em-computacao",
+      "type": "EXIGE",
+      "target": "projeto-e-analise-de-algoritmos",
+      "evidence": "Tópicos Avançados em Computação (8º período, 40 h) exige Projeto e Análise de Algoritmos como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "topicos-avancados-em-computacao",
+      "type": "DESENVOLVE",
+      "target": "pesquisa-e-inovacao",
+      "evidence": "Tópicos Avançados em Computação (8º período, 40 h) exige Projeto e Análise de Algoritmos como pré-requisito. Desenvolve a competência Pesquisa e Inovação.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "visao-computacional",
+      "type": "EXIGE",
+      "target": "aprendizado-de-maquina",
+      "evidence": "Visão Computacional (8º período, 60 h) exige Aprendizado de Máquina e Computação Gráfica como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "visao-computacional",
+      "type": "EXIGE",
+      "target": "computacao-grafica",
+      "evidence": "Visão Computacional (8º período, 60 h) exige Aprendizado de Máquina e Computação Gráfica como pré-requisitos.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "visao-computacional",
+      "type": "DESENVOLVE",
+      "target": "inteligencia-artificial-aplicada",
+      "evidence": "Visão Computacional (8º período, 60 h) exige Aprendizado de Máquina e Computação Gráfica como pré-requisitos. Desenvolve a competência Inteligência Artificial Aplicada.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "gestao-de-projetos",
+      "type": "EXIGE",
+      "target": "engenharia-de-software",
+      "evidence": "Gestão de Projetos (8º período, 40 h) exige Engenharia de Software como pré-requisito.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "gestao-de-projetos",
+      "type": "DESENVOLVE",
+      "target": "comunicacao-tecnica",
+      "evidence": "Gestão de Projetos (8º período, 40 h) exige Engenharia de Software como pré-requisito. Desenvolve a competência Comunicação Técnica.",
+      "document": "ppc-2026"
+    },
+    {
+      "source": "ppc-2022",
       "type": "DEFINE",
-      "target": "regulamento-2026"
-    }
-  ],
-  "documents": [
-    {
-      "id": "ppc",
-      "title": "PPC 2026",
-      "text": "O curso Ciência da Computação adota a Matriz 2026. Estruturas de Dados exige Algoritmos. Projeto Integrador exige Estruturas de Dados e Banco de Dados.",
-      "version": "2026"
+      "target": "matriz-2022",
+      "evidence": "O PPC 2022 define a Matriz 2022 do curso de Ciência da Computação.",
+      "document": "ppc-2022"
     },
     {
-      "id": "regulamento",
-      "title": "Regulamento 2026",
-      "text": "O Regulamento Acadêmico 2026 descreve procedimentos gerais. Situações individuais dependem da secretaria e coordenação.",
-      "version": "2026"
+      "source": "matriz-2022",
+      "type": "INCLUI",
+      "target": "introducao-a-programacao",
+      "evidence": "A Matriz 2022 inclui: Introdução à Programação; Estruturas de Dados I; Programação II; Estruturas de Dados II; Banco de Dados I; Linguagens Formais; Laboratório de Projetos; Sistemas Inteligentes; Cálculo I.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "matriz-2022",
+      "type": "INCLUI",
+      "target": "estruturas-de-dados-i",
+      "evidence": "A Matriz 2022 inclui: Introdução à Programação; Estruturas de Dados I; Programação II; Estruturas de Dados II; Banco de Dados I; Linguagens Formais; Laboratório de Projetos; Sistemas Inteligentes; Cálculo I.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "matriz-2022",
+      "type": "INCLUI",
+      "target": "programacao-ii",
+      "evidence": "A Matriz 2022 inclui: Introdução à Programação; Estruturas de Dados I; Programação II; Estruturas de Dados II; Banco de Dados I; Linguagens Formais; Laboratório de Projetos; Sistemas Inteligentes; Cálculo I.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "matriz-2022",
+      "type": "INCLUI",
+      "target": "estruturas-de-dados-ii",
+      "evidence": "A Matriz 2022 inclui: Introdução à Programação; Estruturas de Dados I; Programação II; Estruturas de Dados II; Banco de Dados I; Linguagens Formais; Laboratório de Projetos; Sistemas Inteligentes; Cálculo I.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "matriz-2022",
+      "type": "INCLUI",
+      "target": "banco-de-dados-i",
+      "evidence": "A Matriz 2022 inclui: Introdução à Programação; Estruturas de Dados I; Programação II; Estruturas de Dados II; Banco de Dados I; Linguagens Formais; Laboratório de Projetos; Sistemas Inteligentes; Cálculo I.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "matriz-2022",
+      "type": "INCLUI",
+      "target": "linguagens-formais",
+      "evidence": "A Matriz 2022 inclui: Introdução à Programação; Estruturas de Dados I; Programação II; Estruturas de Dados II; Banco de Dados I; Linguagens Formais; Laboratório de Projetos; Sistemas Inteligentes; Cálculo I.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "matriz-2022",
+      "type": "INCLUI",
+      "target": "laboratorio-de-projetos",
+      "evidence": "A Matriz 2022 inclui: Introdução à Programação; Estruturas de Dados I; Programação II; Estruturas de Dados II; Banco de Dados I; Linguagens Formais; Laboratório de Projetos; Sistemas Inteligentes; Cálculo I.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "matriz-2022",
+      "type": "INCLUI",
+      "target": "sistemas-inteligentes",
+      "evidence": "A Matriz 2022 inclui: Introdução à Programação; Estruturas de Dados I; Programação II; Estruturas de Dados II; Banco de Dados I; Linguagens Formais; Laboratório de Projetos; Sistemas Inteligentes; Cálculo I.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "matriz-2022",
+      "type": "INCLUI",
+      "target": "calculo-i",
+      "evidence": "A Matriz 2022 inclui: Introdução à Programação; Estruturas de Dados I; Programação II; Estruturas de Dados II; Banco de Dados I; Linguagens Formais; Laboratório de Projetos; Sistemas Inteligentes; Cálculo I.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "estruturas-de-dados-i",
+      "type": "EXIGE",
+      "target": "introducao-a-programacao",
+      "evidence": "Estruturas de Dados I (2º período da Matriz 2022, 80 h) exige Introdução à Programação como pré-requisito.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "programacao-ii",
+      "type": "EXIGE",
+      "target": "introducao-a-programacao",
+      "evidence": "Programação II (2º período da Matriz 2022, 80 h) exige Introdução à Programação como pré-requisito.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "estruturas-de-dados-ii",
+      "type": "EXIGE",
+      "target": "estruturas-de-dados-i",
+      "evidence": "Estruturas de Dados II (3º período da Matriz 2022, 60 h) exige Estruturas de Dados I como pré-requisito.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "banco-de-dados-i",
+      "type": "EXIGE",
+      "target": "estruturas-de-dados-i",
+      "evidence": "Banco de Dados I (3º período da Matriz 2022, 80 h) exige Estruturas de Dados I como pré-requisito.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "laboratorio-de-projetos",
+      "type": "EXIGE",
+      "target": "banco-de-dados-i",
+      "evidence": "Laboratório de Projetos (4º período da Matriz 2022, 80 h) exige Banco de Dados I e Programação II como pré-requisitos.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "laboratorio-de-projetos",
+      "type": "EXIGE",
+      "target": "programacao-ii",
+      "evidence": "Laboratório de Projetos (4º período da Matriz 2022, 80 h) exige Banco de Dados I e Programação II como pré-requisitos.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "sistemas-inteligentes",
+      "type": "EXIGE",
+      "target": "estruturas-de-dados-ii",
+      "evidence": "Sistemas Inteligentes (5º período da Matriz 2022, 60 h) exige Estruturas de Dados II como pré-requisito.",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "algoritmos",
+      "type": "EQUIVALE_A",
+      "target": "introducao-a-programacao",
+      "evidence": "Algoritmos (Matriz 2026) equivale a Introdução à Programação (Matriz 2022).",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "estruturas-de-dados",
+      "type": "EQUIVALE_A",
+      "target": "estruturas-de-dados-i",
+      "evidence": "Estruturas de Dados (Matriz 2026) equivale a Estruturas de Dados I (Matriz 2022).",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "estruturas-de-dados-avancadas",
+      "type": "EQUIVALE_A",
+      "target": "estruturas-de-dados-ii",
+      "evidence": "Estruturas de Dados Avançadas (Matriz 2026) equivale a Estruturas de Dados II (Matriz 2022).",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "programacao-orientada-a-objetos",
+      "type": "EQUIVALE_A",
+      "target": "programacao-ii",
+      "evidence": "Programação Orientada a Objetos (Matriz 2026) equivale a Programação II (Matriz 2022).",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "banco-de-dados",
+      "type": "EQUIVALE_A",
+      "target": "banco-de-dados-i",
+      "evidence": "Banco de Dados (Matriz 2026) equivale a Banco de Dados I (Matriz 2022).",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "teoria-da-computacao",
+      "type": "EQUIVALE_A",
+      "target": "linguagens-formais",
+      "evidence": "Teoria da Computação (Matriz 2026) equivale a Linguagens Formais (Matriz 2022).",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "inteligencia-artificial",
+      "type": "EQUIVALE_A",
+      "target": "sistemas-inteligentes",
+      "evidence": "Inteligência Artificial (Matriz 2026) equivale a Sistemas Inteligentes (Matriz 2022).",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "projeto-integrador",
+      "type": "EQUIVALE_A",
+      "target": "laboratorio-de-projetos",
+      "evidence": "Projeto Integrador (Matriz 2026) equivale a Laboratório de Projetos (Matriz 2022).",
+      "document": "ppc-2022"
+    },
+    {
+      "source": "regulamento-2026",
+      "type": "DEFINE",
+      "target": "regulamento-academico-2026",
+      "evidence": "O Regulamento 2026 define o Regulamento Acadêmico 2026 da Universidade Exemplo, aplicável a todos os cursos de graduação.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "regulamento-academico-2026",
+      "type": "POSSUI",
+      "target": "art-12",
+      "evidence": "O Regulamento Acadêmico 2026 possui os artigos Art. 12, Art. 15, Art. 18, Art. 21, Art. 25 e Art. 30, transcritos a seguir.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "regulamento-academico-2026",
+      "type": "POSSUI",
+      "target": "art-15",
+      "evidence": "O Regulamento Acadêmico 2026 possui os artigos Art. 12, Art. 15, Art. 18, Art. 21, Art. 25 e Art. 30, transcritos a seguir.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "regulamento-academico-2026",
+      "type": "POSSUI",
+      "target": "art-18",
+      "evidence": "O Regulamento Acadêmico 2026 possui os artigos Art. 12, Art. 15, Art. 18, Art. 21, Art. 25 e Art. 30, transcritos a seguir.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "regulamento-academico-2026",
+      "type": "POSSUI",
+      "target": "art-21",
+      "evidence": "O Regulamento Acadêmico 2026 possui os artigos Art. 12, Art. 15, Art. 18, Art. 21, Art. 25 e Art. 30, transcritos a seguir.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "regulamento-academico-2026",
+      "type": "POSSUI",
+      "target": "art-25",
+      "evidence": "O Regulamento Acadêmico 2026 possui os artigos Art. 12, Art. 15, Art. 18, Art. 21, Art. 25 e Art. 30, transcritos a seguir.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "regulamento-academico-2026",
+      "type": "POSSUI",
+      "target": "art-30",
+      "evidence": "O Regulamento Acadêmico 2026 possui os artigos Art. 12, Art. 15, Art. 18, Art. 21, Art. 25 e Art. 30, transcritos a seguir.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "art-25",
+      "type": "DEFINE",
+      "target": "monitoria",
+      "evidence": "Art. 25. Atividades complementares. São reconhecidas como atividades complementares a Monitoria, a Iniciação Científica, a Maratona de Programação e a Extensão Universitária, até o limite de 80 horas por modalidade.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "art-25",
+      "type": "DEFINE",
+      "target": "iniciacao-cientifica",
+      "evidence": "Art. 25. Atividades complementares. São reconhecidas como atividades complementares a Monitoria, a Iniciação Científica, a Maratona de Programação e a Extensão Universitária, até o limite de 80 horas por modalidade.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "art-25",
+      "type": "DEFINE",
+      "target": "maratona-de-programacao",
+      "evidence": "Art. 25. Atividades complementares. São reconhecidas como atividades complementares a Monitoria, a Iniciação Científica, a Maratona de Programação e a Extensão Universitária, até o limite de 80 horas por modalidade.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "art-25",
+      "type": "DEFINE",
+      "target": "extensao-universitaria",
+      "evidence": "Art. 25. Atividades complementares. São reconhecidas como atividades complementares a Monitoria, a Iniciação Científica, a Maratona de Programação e a Extensão Universitária, até o limite de 80 horas por modalidade.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "art-30",
+      "type": "DEFINE",
+      "target": "trabalho-de-conclusao-de-curso-i",
+      "evidence": "Art. 30. Trabalho de conclusão. O Trabalho de Conclusão de Curso I e o Trabalho de Conclusão de Curso II são individuais e avaliados por banca de três docentes.",
+      "document": "regulamento-academico-2026"
+    },
+    {
+      "source": "art-30",
+      "type": "DEFINE",
+      "target": "trabalho-de-conclusao-de-curso-ii",
+      "evidence": "Art. 30. Trabalho de conclusão. O Trabalho de Conclusão de Curso I e o Trabalho de Conclusão de Curso II são individuais e avaliados por banca de três docentes.",
+      "document": "regulamento-academico-2026"
     }
   ]
 }

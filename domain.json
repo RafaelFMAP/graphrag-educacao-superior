@@ -28,5 +28,128 @@
     "PERTENCE_A",
     "EQUIVALE_A"
   ],
-  "warning": "Dados sintéticos. Não substitui orientação da secretaria ou coordenação acadêmica."
+  "warning": "Dados sintéticos. Não substitui orientação da secretaria ou coordenação acadêmica.",
+  "relation_signatures": {
+    "OFERECE": [
+      [
+        "Instituicao",
+        "Campus"
+      ],
+      [
+        "Curso"
+      ]
+    ],
+    "ADOTA": [
+      [
+        "Curso"
+      ],
+      [
+        "MatrizCurricular"
+      ]
+    ],
+    "INCLUI": [
+      [
+        "MatrizCurricular",
+        "PeriodoLetivo"
+      ],
+      [
+        "Disciplina",
+        "Ementa"
+      ]
+    ],
+    "EXIGE": [
+      [
+        "Disciplina",
+        "AtividadeComplementar",
+        "Curso"
+      ],
+      [
+        "Disciplina",
+        "Prerequisito",
+        "AtividadeComplementar"
+      ]
+    ],
+    "POSSUI": [
+      [
+        "Instituicao",
+        "Regulamento",
+        "Curso",
+        "Disciplina"
+      ],
+      [
+        "Campus",
+        "Artigo",
+        "AtividadeComplementar",
+        "Ementa",
+        "Curso",
+        "Prerequisito"
+      ]
+    ],
+    "DESENVOLVE": [
+      [
+        "Disciplina",
+        "Curso",
+        "AtividadeComplementar"
+      ],
+      [
+        "Competencia"
+      ]
+    ],
+    "DEFINE": [
+      [
+        "Documento",
+        "Regulamento",
+        "Artigo"
+      ],
+      [
+        "MatrizCurricular",
+        "Regulamento",
+        "Artigo",
+        "AtividadeComplementar",
+        "Disciplina",
+        "Prerequisito",
+        "PeriodoLetivo",
+        "Ementa",
+        "Competencia"
+      ]
+    ],
+    "SUBSTITUI": [
+      [
+        "MatrizCurricular",
+        "Documento",
+        "Regulamento",
+        "Disciplina"
+      ],
+      [
+        "MatrizCurricular",
+        "Documento",
+        "Regulamento",
+        "Disciplina"
+      ]
+    ],
+    "PERTENCE_A": [
+      [
+        "Disciplina",
+        "Campus",
+        "Curso",
+        "Artigo"
+      ],
+      [
+        "PeriodoLetivo",
+        "Instituicao",
+        "Curso",
+        "MatrizCurricular",
+        "Regulamento"
+      ]
+    ],
+    "EQUIVALE_A": [
+      [
+        "Disciplina"
+      ],
+      [
+        "Disciplina"
+      ]
+    ]
+  },
+  "_comment_signatures": "Restrições semânticas: para cada relação, [rótulos de origem, rótulos de destino] permitidos."
 }

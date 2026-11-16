@@ -9,8 +9,9 @@ Assistente acadêmico demonstrativo para consultar **cursos, matrizes curricular
 ## O que o projeto faz
 
 - Importa PDF com texto selecionável, TXT e Markdown.
-- Divide documentos em trechos e extrai entidades e relações com um modelo local.
-- Aceita somente rótulos e relações previstos no domínio e exige um trecho literal como evidência das relações extraídas.
+- Divide documentos em trechos (por parágrafo) e extrai entidades e relações com um modelo local, usando saída JSON estruturada.
+- Aceita somente rótulos e relações previstos no domínio e exige um trecho literal como evidência das relações extraídas; a frase de evidência fica gravada na relação.
+- Resolve entidades equivalentes (mesmo ID canônico, alias, sigla, similaridade de texto ou de embedding) para não duplicar nós.
 - Combina busca textual e vetorial, com embeddings de 768 dimensões.
 - Recupera relações em até três saltos e exibe o subgrafo de contexto.
 - Calcula o caminho mínimo entre duas entidades, limitado a oito relações.
@@ -169,18 +170,60 @@ docker compose exec -T app python evaluate.py
 
 Ainda não há métricas de qualidade: as perguntas e fontes esperadas aguardam revisão humana.
 
+## Dados de demonstração
+
+O corpus em `data/corpus/` é **sintético** e descreve a fictícia Universidade Exemplo:
+
+| Documento | Conteúdo |
+|---|---|
+| `ppc-2026.md` | PPC 2026: Matriz 2026 com 40 disciplinas em 8 períodos, pré-requisitos, competências e ementas |
+| `ppc-2022.md` | PPC 2022: Matriz 2022 (em extinção), pré-requisitos e tabela de equivalências com a Matriz 2026 |
+| `regulamento-academico-2026.md` | Regulamento Acadêmico 2026: pré-requisitos, quebra de pré-requisito, aproveitamento, equivalência, atividades complementares e TCC |
+
+`data/seed.json` é o **grafo-gabarito** (75 entidades, 167 relações). Cada relação registra a frase literal que a sustenta; o `seed.py` ingere o corpus e liga cada relação ao trecho (`Chunk`) que contém essa frase. Corpus e gabarito são gerados juntos por `python scripts/gerar_corpus.py`, o que garante que toda evidência exista no texto. O gabarito também serve para medir a qualidade da extração por LLM.
+
+> Ao atualizar uma instalação anterior, recrie os volumes do banco para descartar os dados antigos: `docker compose down -v && docker compose up --build -d` (os modelos do Ollama precisarão ser baixados de novo), ou execute `docker compose run --rm seed python seed.py --reset`.
+
 ## Modelagem do grafo
 
-- `Entity`: identificador, nome, tipo e rótulo do domínio.
-- `Document`: título, versão e origem.
-- `Chunk`: texto, localização e embedding; ligado ao documento por `FROM_DOCUMENT` e às entidades por `MENTIONS`.
-- Relações de domínio: registram `evidence_id` e `source_type`, distinguindo a semente sintética da extração por LLM.
+```mermaid
+flowchart LR
+    Inst[Instituicao] -- POSSUI --> Campus
+    Inst -- OFERECE --> Curso
+    Campus -- OFERECE --> Curso
+    Curso -- ADOTA --> Matriz[MatrizCurricular]
+    Matriz -- SUBSTITUI --> Matriz
+    Matriz -- INCLUI --> Disc[Disciplina]
+    Disc -- EXIGE --> Disc
+    Disc -- EQUIVALE_A --> Disc
+    Disc -- DESENVOLVE --> Comp[Competencia]
+    DocE[Documento] -- DEFINE --> Matriz
+    DocE -- DEFINE --> Reg[Regulamento]
+    Reg -- POSSUI --> Art[Artigo]
+    Art -- DEFINE --> Ativ[AtividadeComplementar]
+    Art -- DEFINE --> Disc
+    DocE -. REPRESENTA .-> Document[(Document)]
+    Chunk[(Chunk)] -. FROM_DOCUMENT .-> Document
+    Chunk -. MENTIONS .-> Inst & Curso & Disc & Art
+```
+
+- `Entity` (+ rótulo do domínio): `id`, `name`, `kind`, `aliases`, `embedding`.
+- `Document`: título, versão e origem. `Chunk`: texto, localização e embedding; ligado ao documento por `FROM_DOCUMENT` e às entidades por `MENTIONS`.
+- Relações de domínio registram `evidence` (frase literal), `evidence_id` (trecho de origem) e `source_type` (`synthetic_seed` ou `llm_verified_excerpt`).
+- Linhas tracejadas são relações estruturais, fora da allowlist do domínio.
+- **Restrições semânticas:** `domain.json` define, para cada relação, os rótulos permitidos na origem e no destino (`relation_signatures`). `GraphStore.put_edge` recusa relações que violem essa assinatura, como `Curso -ADOTA-> Documento`, mesmo que tenham evidência literal; a ingestão lista as recusas em `rejected`.
+
+**Constraints e índices** (ver `schema.cypher`): unicidade de `id` em `Entity`, `Chunk` e `Document`; índices RANGE (substitutos do BTree no Neo4j 5) em `Entity.name`, `Entity.kind`, `Document.version` e `Chunk.locator`; fulltext em `Entity` (nome, id, aliases) e `Chunk.text`; vetoriais de 768 dimensões em `Chunk.embedding` e `Entity.embedding`.
 
 **Rótulos permitidos:** `Instituicao`, `Campus`, `Curso`, `MatrizCurricular`, `Disciplina`, `Prerequisito`, `Ementa`, `Competencia`, `Regulamento`, `Artigo`, `PeriodoLetivo`, `AtividadeComplementar`, `Documento`.
 
 **Relações permitidas:** `OFERECE`, `ADOTA`, `INCLUI`, `EXIGE`, `POSSUI`, `DESENVOLVE`, `DEFINE`, `SUBSTITUI`, `PERTENCE_A`, `EQUIVALE_A`.
 
-As consultas Cypher usam parâmetros e relações/rótulos validados por lista permitida. O sistema não executa Cypher arbitrário produzido pelo modelo. A presença de evidência literal é uma validação técnica; ainda é necessário revisar a interpretação semântica da relação.
+### Resolução de entidades
+
+`entity_resolution.py` decide, para cada entidade extraída, se ela já existe no grafo, sempre dentro do mesmo rótulo: (1) mesmo ID canônico; (2) alias registrado; (3) sigla com iniciais únicas (`POO`, `TCC I`); (4) similaridade de caracteres ≥ 90 (`Estrutura de Dados`); (5) similaridade de embedding no índice `entity_vector`. Duas proteções evitam fusões erradas: numerais diferentes (`Cálculo I` ≠ `Cálculo II`) e nomes em que um estende o outro (`Banco de Dados` ≠ `Banco de Dados Avançado`). O nome encontrado vira alias da entidade existente, e o resultado da ingestão lista cada decisão.
+
+As consultas Cypher usam parâmetros e relações/rótulos validados por lista permitida. A presença de evidência literal é uma validação técnica; ainda é necessário revisar a interpretação semântica da relação.
 
 ## Estrutura do repositório
 
@@ -190,12 +233,15 @@ config.py              Configuração e domínio
 domain.json            Rótulos, relações e aviso do domínio
 pipeline.py            Leitura, divisão em trechos, extração e ingestão
 graph_store.py         Neo4j, índices e consultas
+entity_resolution.py   Resolução de entidades (canonicalização)
+schema.cypher          Constraints e índices documentados
 retrieval.py           Recuperação híbrida e geração de respostas
 ollama_client.py       Chat e embeddings locais
 seed.py                Carga dos dados sintéticos
 smoke.py               Teste de integração
 evaluate.py            Avaliação de perguntas revisadas
-data/                  Dados e perguntas demonstrativas
+data/                  Corpus sintético, grafo-gabarito e perguntas
+scripts/               Geração do corpus e do gabarito
 tests/                 Testes unitários
 Dockerfile             Imagem da aplicação
 docker-compose.yml     Orquestração dos serviços
