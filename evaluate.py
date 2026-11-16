@@ -202,8 +202,10 @@ def main():
         rows = [r for r in old['linhas'] if (r['id'], r['mode']) not in redone] + rows
         order = {x['id']: i for i, x in enumerate(json.loads((ROOT / 'data' / 'questions.json').read_text(encoding='utf8')))}
         rows.sort(key=lambda r: (order.get(r['id'], 0), r['mode'] != 'graphrag'))
+        redone_labels = [f'{i} ({m})' for i, m in sorted(redone)]
         meta.update({'perguntas': old['meta']['perguntas'], 'modos': old['meta']['modos'],
-                     'reavaliadas': sorted(args.ids), 'data_original': old['meta']['data']})
+                     'reavaliadas': sorted(set(old['meta'].get('reavaliadas', [])) | set(redone_labels)),
+                     'data_original': old['meta'].get('data_original', old['meta']['data'])})
     meta['falhas_infra'] = sum(1 for r in rows if r.get('falha_infra'))
     summary = summarize(rows, use_llm)
     OUT.mkdir(parents=True, exist_ok=True)
